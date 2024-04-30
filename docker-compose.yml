@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  runalytics-frontend:
+    build: .
+    container_name: runalytics-frontend
+    image: runalytics-frontend:latest
+    environment:
+      - TZ=America/Sao_Paulo
+    volumes:
+      - ${PWD}:/app
+    ports:
+      - 4200:4200
