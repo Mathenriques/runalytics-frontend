@@ -17,7 +17,7 @@ main {
   .main-section {
     align-items: left;
     flex-grow: 1;
-
+    width: 100%;
     overflow: hidden;
     position: relative;
 
@@ -112,5 +112,20 @@ main {
       }
     }
 
+  }
+}
+
+@media (max-width: 1024px) {
+  main {
+    display: block;
+    width: 100%;
+
+    .main-section {
+      display: none;
+    }
+
+    h2 {
+      text-align: center;
+    }
   }
 }

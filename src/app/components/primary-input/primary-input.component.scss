@@ -1,9 +1,12 @@
 @import "../../../styles/variables.scss";
 .input-wrapper {
 
+  display: flex;
+  flex-direction: column;
   font-size: 14px;
   text-align: start;
 
+  gap: 5px;
   input {
     color: $grey-color-70;
     border-radius: 8px;
