@@ -1,0 +1,27 @@
+<main>
+  <section class="form-section">
+    <img src="/assets/svg/logo.svg" />
+    <h2>{{ titleForm }}</h2>
+    <ng-content></ng-content>
+    <div class="btn-wrapper">
+      <button class="btn-primary" (click)="submit()">{{ primaryBtnText }}</button>
+      <div class="separator">
+        <div></div>
+        <span>OU</span>
+        <div></div>
+      </div>
+      <button class="btn-secondary" (click)="navigate()">{{ secondaryBtnText }}</button>
+    </div>
+  </section>
+
+  <section class="main-section">
+    <img
+      class="bg-img"
+      src="/assets/svg/bg-image.svg"
+    />
+
+    <div class="title-content">
+      <h1>{{ titleSecondary }}</h1>
+    </div>
+  </section>
+</main>

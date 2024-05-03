@@ -1,0 +1,26 @@
+<app-default-login-layout
+  titleForm="Entre com a sua conta"
+  titleSecondary="Eleve sua corrida para um próximo nível"
+  primaryBtnText="ENTRAR"
+  secondaryBtnText="CADASTRAR"
+  (submit)="submit()"
+  (navigate)="navigate()"
+>
+  <form [formGroup]="loginForm">
+    <app-primary-input
+      formControlName="email"
+      label="Email"
+      placeholder="Email"
+      inputName="email"
+      type="email"
+      ></app-primary-input>
+
+      <app-primary-input
+      formControlName="password"
+      label="Senha"
+      placeholder="Senha"
+      inputName="password"
+      type="password"
+    ></app-primary-input>
+  </form>
+</app-default-login-layout>
