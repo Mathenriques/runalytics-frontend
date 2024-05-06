@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+
+h1 {
+  color: $white-color;
+  font-size: 18px!important;
+  text-align: center;
+  justify-content: center;
+  padding: 75px 0 40px 0;
+}
+
+.informations {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 200px;
+  padding: 0 300px;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 100%;
+
+  }
+
+
+}

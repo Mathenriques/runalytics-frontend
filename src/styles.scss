@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:500,700");
 @import 'ngx-toastr/toastr';
+@import './styles/variables.scss';
 
 * {
   margin: 0;
@@ -10,4 +11,5 @@
 html, body {
   height: 100%;
   font-family: 'Montserrat';
+  background-color: $black-color;
 }
