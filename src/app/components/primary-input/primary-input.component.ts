@@ -23,6 +23,7 @@ export class PrimaryInputComponent implements ControlValueAccessor{
   @Input() label: string = "";
   @Input() inputName: string = "";
   @Input() value: string = "";
+  @Input() isDisabled: boolean = false;
 
 
   onChange: any = () => {}

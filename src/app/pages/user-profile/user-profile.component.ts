@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 
 @Component({
@@ -10,4 +10,5 @@ import { PrimaryInputComponent } from '../../components/primary-input/primary-in
 })
 export class UserProfileComponent {
 
+  @Input() isDisabled: boolean = true;
 }

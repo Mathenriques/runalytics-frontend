@@ -7,19 +7,22 @@
       placeholder="Nome"
       inputName="name"
       type="text"
-    />
+      [isDisabled]="isDisabled"
+      />
     <app-primary-input
       label="Email"
       placeholder="Email"
       inputName="email"
       type="email"
-    />
+      [isDisabled]="isDisabled"
+      />
     <app-primary-input
       label="Data de Nascimento"
       placeholder="Data de Nascimento"
       inputName="data-nascimento"
       type="date"
-    />
+      [isDisabled]="isDisabled"
+      />
   </div>
   <div>
     <app-primary-input
@@ -27,12 +30,14 @@
       placeholder="Peso"
       inputName="weight"
       type="number"
-    />
+      [isDisabled]="isDisabled"
+      />
     <app-primary-input
       label="Altura"
       placeholder="Altura"
       inputName="height"
       type="number"
-    />
+      [isDisabled]="isDisabled"
+      />
   </div>
 </div>
