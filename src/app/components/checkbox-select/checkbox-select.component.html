@@ -1,0 +1,9 @@
+
+<div class="checkbox-select">
+    <span>{{ label }}</span>
+    <div *ngFor="let option of options" class="option" (click)="toggleSelection(option)">
+      <input type="checkbox" [checked]="option.selected" />
+      <label>{{ option.label }}</label>
+    </div>
+  </div>
+  

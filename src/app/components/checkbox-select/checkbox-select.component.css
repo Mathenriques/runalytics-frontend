@@ -1,0 +1,16 @@
+.checkbox-select {
+    font-family: Arial, sans-serif;
+    color: white;
+  }
+  
+  .option {
+    margin-bottom: 5px;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .option input[type="checkbox"] {
+    margin-right: 5px;
+    color: white;
+  }
+  

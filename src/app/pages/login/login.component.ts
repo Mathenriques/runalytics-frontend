@@ -40,6 +40,6 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.router.navigate(['cadastro'])
+    this.router.navigate(['/cadastro'])
   }
 }
