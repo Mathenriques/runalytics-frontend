@@ -1,0 +1,51 @@
+.checkbox-select {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  font-size: 14px;
+}
+
+.options {
+  display: flex;
+  flex-direction: row; /* Alinha os itens na horizontal */
+  gap: 16px; /* Adiciona um espaçamento entre os itens */
+  color: white;
+}
+
+.option {
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 8px; /* Remova este margin se não precisar de espaçamento vertical */
+}
+
+.option input[type="radio"] {
+  display: none;
+}
+
+.radio-button {
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radio-button::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: white;
+  display: none;
+}
+
+.option input[type="radio"]:checked + .radio-button::before {
+  display: block;
+  background-color: black;
+}
