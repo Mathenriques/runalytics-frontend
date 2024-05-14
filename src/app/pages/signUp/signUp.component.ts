@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { CheckboxSelectComponent } from '../../components/checkbox-select/checkbox-select.component';
@@ -11,7 +11,10 @@ import { DefaultSignUpLayoutComponent } from "../../components/default-signUp-la
 @Component({
   selector: 'app-signUp',
   standalone: true,
-  imports: [DefaultSignUpLayoutComponent, ReactiveFormsModule, PrimaryInputComponent, CheckboxSelectComponent, CommonModule],
+  imports: [
+    DefaultSignUpLayoutComponent, ReactiveFormsModule,
+    PrimaryInputComponent, CheckboxSelectComponent, CommonModule
+  ],
   providers: [
     SignUpService,
     { provide: ToastrService, useClass: ToastrService },
@@ -19,17 +22,30 @@ import { DefaultSignUpLayoutComponent } from "../../components/default-signUp-la
   templateUrl: './signUp.component.html',
   styleUrls: ['./signUp.component.scss']
 })
-
 export class SignUpComponent {
 
   genderOptions = [
     { label: 'Masculino', value: 'male' },
     { label: 'Feminino', value: 'female' }
   ];
-  
-  onGenderSelect(selectedOptions: any[]) {
-    throw new Error('Method not implemented.');
-  }
+
+  isOnBalancedDietOptions = [
+    { label: 'Sim', value: true },
+    { label: 'Não', value: false },
+  ]
+
+  conditioningOptions = [
+    { label: 'Iniciante', value: 'easy' },
+    { label: 'Intermediário', value: 'medium' },
+    { label: 'Avançado', value: 'hard' },
+  ]
+
+  diseasesOptions = [
+    { label: 'Diabetes', value: 'diabetes' },
+    { label: 'Pressão Alta', value: 'highPressure' },
+    { label: 'Pressão Baixa', value: 'lowPressure' },
+    { label: 'Nenhuma', value: null }
+  ]
 
   signUpForm: FormGroup;
   isSecondStep: boolean = false;
@@ -43,21 +59,24 @@ export class SignUpComponent {
     this.signUpForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      name: ['', Validators.required],
-      gender: ['', Validators.required],
+      confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       birthday: ['', Validators.required],
+      gender: ['', Validators.required],
+      weight: ['', [Validators.required, Validators.max(400)]],
+      height: ['', [Validators.required, Validators.max(3)]],
       diseases: [''],
-      fitnessLevel: ['', Validators.required],
-      height: ['', Validators.required],
-      weight: ['', Validators.required],
+      fitness_level: ['', [Validators.required]],
       isAdmin: [false],
-      isOnBalancedDiet: [false, Validators.required]
+      isOnBalancedDiet: ['', [Validators.required]],
     });
   }
 
+  onOptionSelect(field: any, selectedOptions: any[]) {
+    this.signUpForm.controls[field].setValue(selectedOptions)
+  }
+
   advance() {
-    // Adicione lógica para avançar para o segundo passo do formulário
-    this.isSecondStep = true;
+    this.isSecondStep = !this.isSecondStep;
   }
 
   navigate() {
@@ -78,5 +97,3 @@ export class SignUpComponent {
     }
   }
 }
-
-export class SignUpModule { }

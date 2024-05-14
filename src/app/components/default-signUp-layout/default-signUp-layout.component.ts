@@ -1,25 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-default-signUp-layout',
-  standalone: true,
-  imports: [],
-  styleUrl: './default-signUp-layout.component.scss',
   templateUrl: './default-signUp-layout.component.html',
+  standalone: true,
+  styleUrls: ['./default-signUp-layout.component.scss']
 })
 export class DefaultSignUpLayoutComponent {
-
-  @Input() titleForm: string = "";
-  @Input() primaryBtnText: string = "";
-  @Input() advanceBtnText: string = "";
-  @Output() submit = new EventEmitter<void>();
+  @Input() titleForm: string = '';
+  @Input() advanceBtnText: string = 'Avançar';
+  @Input() primaryBtnText: string = 'SALVAR';
+  @Input() isSecondStep: boolean = false;
   @Output() advance = new EventEmitter<void>();
-
-  onSubmitClick() {
-    this.submit.emit();
-  }
+  @Output() submit = new EventEmitter<void>();
 
   onAdvanceClick() {
     this.advance.emit();
+  }
+
+  onSubmitClick() {
+    this.submit.emit();
   }
 }

@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common'
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-checkbox-select',
@@ -11,10 +11,11 @@ import { CommonModule } from '@angular/common'
 export class CheckboxSelectComponent {
   @Input() label: string = '';
   @Input() options: any[] = [];
-  @Output() selectedOptionsChange = new EventEmitter<any[]>();
+  @Output() selectedOptionsChange = new EventEmitter<any>();
 
   toggleSelection(option: any) {
-    option.selected = !option.selected;
-    this.selectedOptionsChange.emit(this.options.filter(o => o.selected));
+    this.options.forEach(o => o.selected = false); // Desmarcar todas as opções
+    option.selected = true; // Marcar a opção atual
+    this.selectedOptionsChange.emit(option); // Emitir a opção selecionada
   }
 }

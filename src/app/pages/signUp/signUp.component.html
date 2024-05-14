@@ -1,53 +1,55 @@
 <app-default-signUp-layout
   titleForm="Entre com a sua conta"
-  [advanceBtnText]="isSecondStep ? 'Voltar' : 'Avançar'"
-  primaryBtnText="SALVAR"
-  (navigate)="submit()"
+  [advanceBtnText]="isSecondStep ? 'VOLTAR' : 'AVANÇAR'"
+  [primaryBtnText]="isSecondStep ? 'SALVAR' : ''"
+  (submit)="submit()"
   (advance)="advance()">
 
   <form [formGroup]="signUpForm">
-    <app-primary-input
-      formControlName="email"
-      label="Email"
-      placeholder="Email"
-      inputName="email"
-      type="email">
-    </app-primary-input>
+    <div *ngIf="!isSecondStep">
+      <app-primary-input
+        formControlName="email"
+        label="Email"
+        placeholder="Email"
+        inputName="email"
+        type="email">
+      </app-primary-input>
 
-    <app-primary-input
-      formControlName="birthday"
-      label="Data de Nascimento"
-      placeholder="Data de Nascimento"
-      inputName="birthday"
-      type="date">
-    </app-primary-input>
+      <app-primary-input
+        formControlName="birthday"
+        label="Data de Nascimento"
+        placeholder="Data de Nascimento"
+        inputName="birthday"
+        type="date">
+      </app-primary-input>
 
-    <app-primary-input
-      formControlName="password"
-      label="Senha"
-      placeholder="Senha"
-      inputName="password"
-      type="password">
-    </app-primary-input>
+      <app-primary-input
+        formControlName="password"
+        label="Senha"
+        placeholder="Senha"
+        inputName="password"
+        type="password">
+      </app-primary-input>
 
-    <app-primary-input
-      formControlName="confirmPassword"
-      label="Confirmar Senha"
-      placeholder="Confirmar Senha"
-      inputName="confirmPassword"
-      type="password">
-    </app-primary-input>
+      <app-primary-input
+        formControlName="confirmPassword"
+        label="Confirmar Senha"
+        placeholder="Confirmar Senha"
+        inputName="confirmPassword"
+        type="password">
+      </app-primary-input>
 
-    <app-checkbox-select 
-      [label]="'Gênero'" 
-      [options]="genderOptions"
-      (selectedOptionsChange)="onGenderSelect($event)">
-    </app-checkbox-select>
+      <app-checkbox-select
+        [label]="'Gênero'"
+        [options]="genderOptions"
+        (selectedOptionsChange)="onOptionSelect('gender', $event)">
+      </app-checkbox-select>
+    </div>
 
     <div *ngIf="isSecondStep">
       <app-primary-input
         formControlName="weight"
-        label="Pesp"
+        label="Peso"
         placeholder="Peso"
         inputName="weight"
         type="number">
@@ -61,8 +63,23 @@
         type="number">
       </app-primary-input>
 
-    </div>
+      <app-checkbox-select
+        [label]="'Nível de Condicionamento'"
+        [options]="conditioningOptions"
+        (selectedOptionsChange)="onOptionSelect('fitness_level', $event)">
+      </app-checkbox-select>
 
-    
+      <app-checkbox-select
+        [label]="'Segue Dieta Balanceada?'"
+        [options]="isOnBalancedDietOptions"
+        (selectedOptionsChange)="onOptionSelect('isOnBalancedDiet', $event)">
+      </app-checkbox-select>
+
+      <app-checkbox-select
+        [label]="'Possui alguma das doenças abaixo?'"
+        [options]="diseasesOptions"
+        (selectedOptionsChange)="onOptionSelect('diseases', $event)">
+      </app-checkbox-select>
+    </div>
   </form>
 </app-default-signUp-layout>

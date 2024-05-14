@@ -15,7 +15,6 @@ main {
   }
 
   .main-section {
-    align-items: left;
     flex-grow: 1;
     width: 100%;
     overflow: hidden;
@@ -75,7 +74,7 @@ main {
       .separator {
         display: flex;
         color: $white-color;
-        font-size: 12;
+        font-size: 12px;
         align-items: center;
         justify-content: center;
         width: 100%;
@@ -122,10 +121,6 @@ main {
 
     .main-section {
       display: none;
-    }
-
-    h2 {
-      text-align: center;
     }
   }
 }
