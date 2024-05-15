@@ -13,7 +13,7 @@ export class SignUpService {
   signUp(userData: any) {
     return this.httpClient.post<LoginResponse>("/cadastro", userData).pipe(
       tap((value) => {
-        sessionStorage.setItem("auth-token", value.token);
+        sessionStorage.setItem("auth-token", value.access_token);
       })
     );
   }
