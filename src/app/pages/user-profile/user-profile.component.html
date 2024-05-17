@@ -8,21 +8,23 @@
       inputName="name"
       type="text"
       [isDisabled]="isDisabled"
-      />
+    />
     <app-primary-input
       label="Email"
       placeholder="Email"
       inputName="email"
       type="email"
       [isDisabled]="isDisabled"
-      />
+    />
     <app-primary-input
       label="Data de Nascimento"
       placeholder="Data de Nascimento"
       inputName="data-nascimento"
       type="date"
       [isDisabled]="isDisabled"
-      />
+    />
+
+    <app-checkbox-select [label]="'Genero'" [options]="genderOptions" />
   </div>
   <div>
     <app-primary-input
@@ -31,13 +33,25 @@
       inputName="weight"
       type="number"
       [isDisabled]="isDisabled"
-      />
+    />
     <app-primary-input
       label="Altura"
       placeholder="Altura"
       inputName="height"
       type="number"
       [isDisabled]="isDisabled"
+    />
+    <app-checkbox-select
+      [label]="'Nivel de Condicionamento'"
+      [options]="conditioningOptions"
       />
+      <app-checkbox-select
+      [label]="'Segue Dieta Balanceada?'"
+      [options]="isOnBalancedDietOptions"
+    />
+    <app-checkbox-select
+      [label]="'Doenças Crônicas ou Imediatas'"
+      [options]="diseasesOptions"
+    />
   </div>
 </div>
