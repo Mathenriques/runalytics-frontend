@@ -30,6 +30,7 @@ export class UserProfileComponent implements OnInit {
     height: 0,
     fitness_level: UserFitnessLevel.ADVANCED,
     isOnBalancedDiet: false,
+    isAdmin: false
   };
 
   genderOptions = [

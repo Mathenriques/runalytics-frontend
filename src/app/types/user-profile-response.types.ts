@@ -21,4 +21,5 @@ export type UserProfileResponse = {
   height: number | null;
   fitness_level: UserFitnessLevel | null;
   isOnBalancedDiet: boolean | null;
+  isAdmin: boolean;
 }

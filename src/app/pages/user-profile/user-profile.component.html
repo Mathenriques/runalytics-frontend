@@ -29,7 +29,7 @@
 
     <app-checkbox-select [label]="'Genero'" [options]="genderOptions" />
   </div>
-  <div>
+  <div [hidden]="!userData.isAdmin">
     <app-primary-input
       label="Peso"
       placeholder="Peso"
