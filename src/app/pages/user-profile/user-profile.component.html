@@ -8,6 +8,7 @@
       inputName="name"
       type="text"
       [isDisabled]="isDisabled"
+      [value]="userData.name"
     />
     <app-primary-input
       label="Email"
@@ -15,6 +16,7 @@
       inputName="email"
       type="email"
       [isDisabled]="isDisabled"
+      [value]="userData.email"
     />
     <app-primary-input
       label="Data de Nascimento"
@@ -22,6 +24,7 @@
       inputName="data-nascimento"
       type="date"
       [isDisabled]="isDisabled"
+      [value]="userData.birth_date"
     />
 
     <app-checkbox-select [label]="'Genero'" [options]="genderOptions" />
@@ -33,6 +36,7 @@
       inputName="weight"
       type="number"
       [isDisabled]="isDisabled"
+      [value]="userData.weight"
     />
     <app-primary-input
       label="Altura"
@@ -40,6 +44,7 @@
       inputName="height"
       type="number"
       [isDisabled]="isDisabled"
+      [value]="userData.height"
     />
     <app-checkbox-select
       [label]="'Nivel de Condicionamento'"

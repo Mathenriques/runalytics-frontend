@@ -34,7 +34,7 @@ export class LoginComponent {
 
   submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: () => this.router.navigate(['user/profile']),
+      next: () => this.router.navigate(['user/profile/7110a160-a69a-4beb-8d7c-a86f53d564f3']),
       error: () =>  this.toastService.error('Error ao fazer login, tente mais tarde')
     });
   }

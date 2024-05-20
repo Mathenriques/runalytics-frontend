@@ -15,10 +15,10 @@ export type UserProfileResponse = {
   email: string;
   password_hash: undefined;
   gender: UserGender;
-  birth_date: Date;
-  diseases: string;
-  weight: number;
-  height: number;
-  fitness_level: UserFitnessLevel;
-  isOnBalancedDiet: boolean;
+  birth_date: string;
+  diseases: string | null;
+  weight: number | null;
+  height: number | null;
+  fitness_level: UserFitnessLevel | null;
+  isOnBalancedDiet: boolean | null;
 }
