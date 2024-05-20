@@ -14,7 +14,6 @@ export class LoginService {
   login(email: string, password: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl, {email, password}).pipe(
       tap((value) => {
-        console.log(value)
         sessionStorage.setItem("auth-token", value.access_token)
       })
     )
