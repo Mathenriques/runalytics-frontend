@@ -22,9 +22,10 @@ export class PrimaryInputComponent implements ControlValueAccessor{
   @Input() placeholder: string = "";
   @Input() label: string = "";
   @Input() inputName: string = "";
+  @Input() value: string | number | null = "";
+  @Input() isDisabled: boolean = false;
 
 
-  value: string = '';
   onChange: any = () => {}
   onTouched: any = () => {}
 

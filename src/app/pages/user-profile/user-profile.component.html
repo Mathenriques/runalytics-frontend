@@ -1,0 +1,62 @@
+<h1>INFORMAÇÕES DO SEU PERFIL</h1>
+
+<div class="informations">
+  <div>
+    <app-primary-input
+      label="Nome"
+      placeholder="Nome"
+      inputName="name"
+      type="text"
+      [isDisabled]="isDisabled"
+      [value]="userData.name"
+    />
+    <app-primary-input
+      label="Email"
+      placeholder="Email"
+      inputName="email"
+      type="email"
+      [isDisabled]="isDisabled"
+      [value]="userData.email"
+    />
+    <app-primary-input
+      label="Data de Nascimento"
+      placeholder="Data de Nascimento"
+      inputName="data-nascimento"
+      type="date"
+      [isDisabled]="isDisabled"
+      [value]="userData.birth_date"
+    />
+
+    <app-checkbox-select [label]="'Genero'" [options]="genderOptions" />
+  </div>
+  <div [hidden]="!userData.isAdmin">
+    <app-primary-input
+      label="Peso"
+      placeholder="Peso"
+      inputName="weight"
+      type="number"
+      [isDisabled]="isDisabled"
+      [value]="userData.weight"
+    />
+    <app-primary-input
+      label="Altura"
+      placeholder="Altura"
+      inputName="height"
+      type="number"
+      [isDisabled]="isDisabled"
+      [value]="userData.height"
+    />
+    <app-checkbox-select
+      [label]="'Nivel de Condicionamento'"
+      [options]="conditioningOptions"
+      />
+      <app-checkbox-select
+      [label]="'Segue Dieta Balanceada?'"
+      [options]="isOnBalancedDietOptions"
+    />
+    <app-checkbox-select
+      [label]="'Doenças Crônicas ou Imediatas'"
+      [options]="diseasesOptions"
+    />
+  </div>
+</div>

@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './checkbox-select.component.html',
-  styleUrls: ['./checkbox-select.component.css']
+  styleUrls: ['./checkbox-select.component.scss']
 })
 export class CheckboxSelectComponent {
   @Input() label: string = '';
