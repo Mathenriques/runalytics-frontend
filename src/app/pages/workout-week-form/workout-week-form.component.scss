@@ -1,0 +1,34 @@
+@import '../../../styles/variables.scss';
+
+h1 {
+  color: $white-color;
+  font-size: 18px!important;
+  text-align: center;
+  justify-content: center;
+  padding: 75px 0 40px 0;
+}
+
+@media (min-width: 1440px) {
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 300px;
+    justify-content: center;
+    width: 100%;
+
+  }
+}
+
+@media (max-width: 1024px) {
+  div {
+    padding: 0 200px;
+  }
+}
+
+@media (max-width: 425px) {
+  div {
+    padding: 0 50px;
+
+  }
+}

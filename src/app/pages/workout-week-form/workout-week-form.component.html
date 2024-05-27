@@ -1,0 +1,60 @@
+<h1> Cadastrar Semana de Treino </h1>
+
+<div>
+  <app-primary-input
+    label="Data de Início"
+    inputName="started_date"
+    type="date"
+  />
+
+  <app-primary-input
+    label="Data de Fim"
+    inputName="end_date"
+    type="date"
+  />
+
+  <app-primary-input
+    label="Volume Semanal de Treino (Km)"
+    inputName="weekly_training_volume"
+    type="number"
+  />
+
+  <app-checkbox-select
+    [label]="'Fez Condicionamento?'"
+    [options]="booleanOptions"
+  />
+
+  <app-primary-input
+    label="Quantas vezes?"
+    inputName="conditioning_frequency"
+    type="number"
+    [isDisabled]="isDisabled"
+  />
+
+  <app-primary-input
+    label="Média de horas de sono semanal"
+    inputName="sleep_hours"
+    type="number"
+  />
+
+  <!-- <app-checkbox-select
+    [label]="'Nível de Estresse ( 1 = nenhum; 10 = muito )'"
+    [options]="sleepingOptions"
+  /> -->
+
+  <app-checkbox-select
+    [label]="'Fez Liberação Miofascial essa semana?'"
+    [options]="booleanOptions"
+  />
+
+  <app-checkbox-select
+    [label]="'Sentiu alguma dor ou incômodo?'"
+    [options]="booleanOptions"
+  />
+
+  <app-primary-input
+    label="Aonde?"
+    inputName="painLocal"
+    type="number"
+  />
+</div>
