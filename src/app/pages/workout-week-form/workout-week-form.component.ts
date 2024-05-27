@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Form, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { Form, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { CheckboxSelectComponent } from '../../components/checkbox-select/checkbox-select.component';
 
@@ -44,15 +44,15 @@ export class WorkoutWeekFormComponent {
   ]
   constructor() {
     this.workoutWeekFrom = new FormGroup({
-      start_date: new FormControl(''),
-      end_date: new FormControl(''),
-      weekly_training_volume: new FormControl(''),
-      didConditioning: new FormControl(''),
+      start_date: new FormControl('', [Validators.required]),
+      end_date: new FormControl('', [Validators.required]),
+      weekly_training_volume: new FormControl('', [Validators.required]),
+      didConditioning: new FormControl('', [Validators.required]),
       conditioning_frequency: new FormControl(''),
-      sleep_hours: new FormControl(''),
-      stress_level: new FormControl(''),
-      didMyofascialRelease: new FormControl(''),
-      feelPain: new FormControl(''),
+      sleep_hours: new FormControl('', [Validators.required]),
+      stress_level: new FormControl('', [Validators.required]),
+      didMyofascialRelease: new FormControl('', [Validators.required]),
+      feelPain: new FormControl('', [Validators.required]),
       painLocal: new FormControl(''),
     });
   }
