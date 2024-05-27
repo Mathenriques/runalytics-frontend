@@ -18,6 +18,7 @@ type InputTypes = 'email' | 'password' | 'text' | 'number' | 'radio' | 'date';
   styleUrl: './primary-input.component.scss',
 })
 export class PrimaryInputComponent implements ControlValueAccessor{
+  @Input() id: string | null = "";
   @Input() type: InputTypes = "text";
   @Input() placeholder: string = "";
   @Input() label: string = "";

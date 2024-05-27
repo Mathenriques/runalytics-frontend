@@ -8,21 +8,21 @@
 >
   <form [formGroup]="loginForm">
     <app-primary-input
-      data-cy="email-input"
       formControlName="email"
       label="Email"
       placeholder="Email"
       inputName="email"
       type="email"
-      ></app-primary-input>
+      id="email-input"
+    ></app-primary-input>
 
       <app-primary-input
-      data-cy="password-input"
       formControlName="password"
       label="Senha"
       placeholder="Senha"
       inputName="password"
       type="password"
-    ></app-primary-input>
+      id="password"
+      ></app-primary-input>
   </form>
 </app-default-login-layout>
