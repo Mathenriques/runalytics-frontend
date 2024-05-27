@@ -35,9 +35,9 @@ export class SignUpComponent {
   ]
 
   conditioningOptions = [
-    { label: 'Iniciante', value: 'easy' },
-    { label: 'Intermediário', value: 'medium' },
-    { label: 'Avançado', value: 'hard' },
+    { label: 'Iniciante', value: 'rookie' },
+    { label: 'Intermediário', value: 'intermediary' },
+    { label: 'Avançado', value: 'advenced' },
   ]
 
   diseasesOptions = [
@@ -63,7 +63,7 @@ export class SignUpComponent {
       birthday: ['', Validators.required],
       gender: ['', Validators.required],
       weight: ['', [Validators.required, Validators.max(400)]],
-      height: ['', [Validators.required, Validators.max(3)]],
+      height: ['', [Validators.required, Validators.max(300)]],
       diseases: [''],
       fitness_level: ['', [Validators.required]],
       isAdmin: [false],

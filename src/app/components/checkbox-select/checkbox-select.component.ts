@@ -14,8 +14,8 @@ export class CheckboxSelectComponent {
   @Output() selectedOptionsChange = new EventEmitter<any>();
 
   toggleSelection(option: any) {
-    this.options.forEach(o => o.selected = false); // Desmarcar todas as opções
-    option.selected = true; // Marcar a opção atual
-    this.selectedOptionsChange.emit(option); // Emitir a opção selecionada
+    this.options.forEach(o => o.selected = false); 
+    option.selected = true; 
+    this.selectedOptionsChange.emit(option.value); 
   }
 }

@@ -8,6 +8,7 @@
 >
   <form [formGroup]="loginForm">
     <app-primary-input
+      data-cy="email-input"
       formControlName="email"
       label="Email"
       placeholder="Email"
@@ -16,6 +17,7 @@
       ></app-primary-input>
 
       <app-primary-input
+      data-cy="password-input"
       formControlName="password"
       label="Senha"
       placeholder="Senha"
