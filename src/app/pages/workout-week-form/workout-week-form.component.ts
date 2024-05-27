@@ -15,7 +15,17 @@ export class WorkoutWeekFormComponent {
   workoutWeekFrom: FormGroup;
   isDisabled: boolean = false;
 
-  booleanOptions = [
+  conditioningOptions = [
+    { label: 'Sim', value: true },
+    { label: 'Não', value: false },
+  ]
+
+  myofascialOptions = [
+    { label: 'Sim', value: true },
+    { label: 'Não', value: false },
+  ]
+
+  painOptions = [
     { label: 'Sim', value: true },
     { label: 'Não', value: false },
   ]
