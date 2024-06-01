@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../types/login-response.types';
 import { tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignUpService {
-  apiUrl: string = 'https://lobster-app-i94xe.ondigitalocean.app/users';
+  apiUrl: string = `${environment.apiURL}/users`
+
 
   constructor(private httpClient: HttpClient) { }
 

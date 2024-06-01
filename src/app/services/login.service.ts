@@ -1,14 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { LoginResponse } from '../types/login-response.types';
-import { map, tap } from 'rxjs';
+import { map } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-  apiUrl: string = 'http://localhost:3000/auth/sign-in';
+  apiUrl: string = `${environment.apiURL}/auth/sign-in`
   jwtHelper: JwtHelperService;
 
   constructor(private httpClient: HttpClient) {
