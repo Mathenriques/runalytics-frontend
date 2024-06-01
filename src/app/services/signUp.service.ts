@@ -7,11 +7,12 @@ import { tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SignUpService {
+  apiUrl: string = 'https://lobster-app-i94xe.ondigitalocean.app/users';
 
   constructor(private httpClient: HttpClient) { }
 
   signUp(userData: any) {
-    return this.httpClient.post<LoginResponse>("/cadastro", userData).pipe(
+    return this.httpClient.post<LoginResponse>(this.apiUrl, userData).pipe(
       tap((value) => {
         sessionStorage.setItem("auth-token", value.access_token);
       })
