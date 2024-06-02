@@ -25,27 +25,27 @@ import { OptionsSelect } from '../../types/options-select.types';
 })
 export class SignUpComponent {
 
-  genderOptions = [
+  genderOptions: OptionsSelect[] = [
     { label: 'Masculino', value: 'male' },
     { label: 'Feminino', value: 'female' }
   ];
 
-  isOnBalancedDietOptions = [
+  isOnBalancedDietOptions: OptionsSelect[] = [
     { label: 'Sim', value: true },
     { label: 'Não', value: false },
   ]
 
-  conditioningOptions = [
+  conditioningOptions: OptionsSelect[] = [
     { label: 'Iniciante', value: 'rookie' },
     { label: 'Intermediário', value: 'intermediary' },
     { label: 'Avançado', value: 'advanced' },
   ]
 
-  diseasesOptions = [
+  diseasesOptions: OptionsSelect[] = [
     { label: 'Diabetes', value: 'diabetes' },
     { label: 'Pressão Alta', value: 'highPressure' },
     { label: 'Pressão Baixa', value: 'lowPressure' },
-    { label: 'Nenhuma', value: null }
+    { label: 'Nenhuma', value: '' }
   ]
 
   signUpForm: FormGroup;
