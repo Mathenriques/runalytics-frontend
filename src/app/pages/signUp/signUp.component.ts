@@ -1,52 +1,59 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormGroup, Validators, FormBuilder } from '@angular/forms';
+import {
+  ReactiveFormsModule,
+  FormGroup,
+  Validators,
+  FormBuilder,
+} from '@angular/forms';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { CheckboxSelectComponent } from '../../components/checkbox-select/checkbox-select.component';
 import { Router } from '@angular/router';
 import { SignUpService } from '../../services/signUp.service';
 import { ToastrService } from 'ngx-toastr';
-import { DefaultSignUpLayoutComponent } from "../../components/default-signUp-layout/default-signUp-layout.component";
+import { DefaultSignUpLayoutComponent } from '../../components/default-signUp-layout/default-signUp-layout.component';
 import { OptionsSelect } from '../../types/options-select.types';
 
 @Component({
   selector: 'app-signUp',
   standalone: true,
   imports: [
-    DefaultSignUpLayoutComponent, ReactiveFormsModule,
-    PrimaryInputComponent, CheckboxSelectComponent, CommonModule
+    DefaultSignUpLayoutComponent,
+    ReactiveFormsModule,
+    PrimaryInputComponent,
+    CheckboxSelectComponent,
+    CommonModule,
   ],
   providers: [
     SignUpService,
     { provide: ToastrService, useClass: ToastrService },
   ],
   templateUrl: './signUp.component.html',
-  styleUrls: ['./signUp.component.scss']
+  styleUrls: ['./signUp.component.scss'],
 })
 export class SignUpComponent {
-
   genderOptions: OptionsSelect[] = [
     { label: 'Masculino', value: 'male' },
-    { label: 'Feminino', value: 'female' }
+    { label: 'Feminino', value: 'female' },
   ];
 
   isOnBalancedDietOptions: OptionsSelect[] = [
     { label: 'Sim', value: true },
     { label: 'Não', value: false },
-  ]
+  ];
 
   conditioningOptions: OptionsSelect[] = [
     { label: 'Iniciante', value: 'rookie' },
     { label: 'Intermediário', value: 'intermediary' },
     { label: 'Avançado', value: 'advanced' },
-  ]
+  ];
 
   diseasesOptions: OptionsSelect[] = [
     { label: 'Diabetes', value: 'diabetes' },
     { label: 'Pressão Alta', value: 'highPressure' },
     { label: 'Pressão Baixa', value: 'lowPressure' },
-    { label: 'Nenhuma', value: '' }
-  ]
+    { label: 'Nenhuma', value: '' },
+  ];
 
   signUpForm: FormGroup;
   isSecondStep: boolean = false;
@@ -60,8 +67,22 @@ export class SignUpComponent {
     this.signUpForm = this.fb.group({
       name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
+        ],
+      ],
+      confirmPassword: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(4),
+          Validators.maxLength(20),
+        ],
+      ],
       birth_date: ['', Validators.required],
       gender: ['', Validators.required],
       weight: ['', [Validators.required]],
@@ -77,25 +98,28 @@ export class SignUpComponent {
     this.signUpForm.controls[field].setValue(selectedOptions.value);
   }
 
-  advance() {
-    this.isSecondStep = !this.isSecondStep;
-  }
-
   navigate() {
     this.router.navigate(['/login']);
   }
 
   submit() {
-    if (this.signUpForm.valid) {
+    if (!this.isSecondStep) {
+      this.isSecondStep = !this.isSecondStep;
+    } else if (this.signUpForm.valid) {
       this.signUpService.signUp(this.signUpForm.value).subscribe({
         next: () => {
           this.toastService.success('Registro feito com sucesso!');
           this.navigate();
         },
-        error: () => this.toastService.error('Erro ao registrar, tente novamente mais tarde')
+        error: () =>
+          this.toastService.error(
+            'Erro ao registrar, tente novamente mais tarde'
+          ),
       });
     } else {
-      this.toastService.error('Por favor, preencha todos os campos corretamente.');
+      this.toastService.error(
+        'Por favor, preencha todos os campos corretamente.'
+      );
     }
   }
 }

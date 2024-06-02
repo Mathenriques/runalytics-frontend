@@ -1,9 +1,9 @@
 <app-default-signUp-layout
   titleForm="Entre com a sua conta"
-  [advanceBtnText]="isSecondStep ? 'VOLTAR' : 'AVANÇAR'"
-  [primaryBtnText]="isSecondStep ? 'SALVAR' : ''"
+  [auxBtnText]="isSecondStep ? 'VOLTAR' : 'VOLTAR'"
+  [primaryBtnText]="isSecondStep ? 'SALVAR' : 'AVANÇAR'"
   (submit)="submit()"
-  (advance)="advance()">
+  (aux)="navigate()">
 
   <form [formGroup]="signUpForm">
     <div *ngIf="!isSecondStep">
