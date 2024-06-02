@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { environment } from '../../environments/environment';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,7 @@ export class LoginService {
   login(email: string, password: string) {
     return this.httpClient.post<LoginResponse>(this.apiUrl, {email, password}).pipe(
       map((value) => {
-        sessionStorage.setItem("auth-token", value.access_token)
+        localStorage.setItem("access_token", value.access_token)
         const decodedToken = this.jwtHelper.decodeToken(value.access_token);
         return decodedToken.sub;
       })
