@@ -58,10 +58,11 @@ export class SignUpComponent {
     private toastService: ToastrService
   ) {
     this.signUpForm = this.fb.group({
+      name: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
-      birthday: ['', Validators.required],
+      birth_date: ['', Validators.required],
       gender: ['', Validators.required],
       weight: ['', [Validators.required]],
       height: ['', [Validators.required]],
