@@ -10,7 +10,6 @@ import { environment } from '../../environments/environment';
 export class SignUpService {
   apiUrl: string = `${environment.apiURL}/users`
 
-
   constructor(private httpClient: HttpClient) { }
 
   signUp(userData: any) {

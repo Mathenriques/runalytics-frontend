@@ -17,7 +17,8 @@ export class AuthGuard implements CanActivate {
     if (authToken) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      // Redirect to the home page if the user doesn't have an access token
+      this.router.navigate(['/']);
       return false;
     }
   }
