@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { SignUpService } from '../../services/signUp.service';
 import { ToastrService } from 'ngx-toastr';
 import { DefaultSignUpLayoutComponent } from "../../components/default-signUp-layout/default-signUp-layout.component";
+import { OptionsSelect } from '../../types/options-select.types';
 
 @Component({
   selector: 'app-signUp',
@@ -35,9 +36,9 @@ export class SignUpComponent {
   ]
 
   conditioningOptions = [
-    { label: 'Iniciante', value: 'easy' },
-    { label: 'Intermediário', value: 'medium' },
-    { label: 'Avançado', value: 'hard' },
+    { label: 'Iniciante', value: 'rookie' },
+    { label: 'Intermediário', value: 'intermediary' },
+    { label: 'Avançado', value: 'advanced' },
   ]
 
   diseasesOptions = [
@@ -62,8 +63,8 @@ export class SignUpComponent {
       confirmPassword: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       birthday: ['', Validators.required],
       gender: ['', Validators.required],
-      weight: ['', [Validators.required, Validators.max(400)]],
-      height: ['', [Validators.required, Validators.max(3)]],
+      weight: ['', [Validators.required]],
+      height: ['', [Validators.required]],
       diseases: [''],
       fitness_level: ['', [Validators.required]],
       isAdmin: [false],
@@ -71,8 +72,8 @@ export class SignUpComponent {
     });
   }
 
-  onOptionSelect(field: any, selectedOptions: any[]) {
-    this.signUpForm.controls[field].setValue(selectedOptions)
+  onOptionSelect(field: any, selectedOptions: OptionsSelect) {
+    this.signUpForm.controls[field].setValue(selectedOptions.value);
   }
 
   advance() {
