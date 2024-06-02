@@ -1,12 +1,20 @@
 <app-default-signUp-layout
   titleForm="Entre com a sua conta"
-  [advanceBtnText]="isSecondStep ? 'VOLTAR' : 'AVANÇAR'"
-  [primaryBtnText]="isSecondStep ? 'SALVAR' : ''"
+  [auxBtnText]="isSecondStep ? 'VOLTAR' : 'VOLTAR'"
+  [primaryBtnText]="isSecondStep ? 'SALVAR' : 'AVANÇAR'"
   (submit)="submit()"
-  (advance)="advance()">
+  (aux)="navigate()">
 
   <form [formGroup]="signUpForm">
     <div *ngIf="!isSecondStep">
+      <app-primary-input
+        formControlName="name"
+        label="Nome"
+        placeholder="Nome"
+        inputName="name"
+        type="text">
+      </app-primary-input>
+
       <app-primary-input
         formControlName="email"
         label="Email"
@@ -16,10 +24,10 @@
       </app-primary-input>
 
       <app-primary-input
-        formControlName="birthday"
+        formControlName="birth_date"
         label="Data de Nascimento"
         placeholder="Data de Nascimento"
-        inputName="birthday"
+        inputName="birth_date"
         type="date">
       </app-primary-input>
 
@@ -49,7 +57,7 @@
     <div *ngIf="isSecondStep">
       <app-primary-input
         formControlName="weight"
-        label="Peso"
+        label="Peso ( em kg )"
         placeholder="Peso"
         inputName="weight"
         type="number">
@@ -57,7 +65,7 @@
 
       <app-primary-input
         formControlName="height"
-        label="Altura"
+        label="Altura ( em cm )"
         placeholder="Altura"
         inputName="height"
         type="number">

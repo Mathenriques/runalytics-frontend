@@ -8,14 +8,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class DefaultSignUpLayoutComponent {
   @Input() titleForm: string = '';
-  @Input() advanceBtnText: string = 'Avançar';
+  @Input() auxBtnText: string = 'AVANÇAR';
   @Input() primaryBtnText: string = 'SALVAR';
   @Input() isSecondStep: boolean = false;
-  @Output() advance = new EventEmitter<void>();
+  @Output() aux = new EventEmitter<void>();
   @Output() submit = new EventEmitter<void>();
 
-  onAdvanceClick() {
-    this.advance.emit();
+  onAuxClick() {
+    this.aux.emit();
   }
 
   onSubmitClick() {

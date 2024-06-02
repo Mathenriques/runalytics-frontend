@@ -10,13 +10,12 @@ import { environment } from '../../environments/environment';
 export class SignUpService {
   apiUrl: string = `${environment.apiURL}/users`
 
-
   constructor(private httpClient: HttpClient) { }
 
   signUp(userData: any) {
     return this.httpClient.post<LoginResponse>(this.apiUrl, userData).pipe(
       tap((value) => {
-        sessionStorage.setItem("auth-token", value.access_token);
+        sessionStorage.setItem("access_token", value.access_token);
       })
     );
   }
