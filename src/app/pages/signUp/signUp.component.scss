@@ -8,10 +8,5 @@ form {
     display: flex;
     flex-direction: column;
     gap: 13px;
-
-    .password_instructions{
-      color: $white-color;
-      font-size: small;
-    }
   }
 }
