@@ -92,7 +92,11 @@ export class SignUpComponent {
   }
 
   navigate() {
-    this.router.navigate(['/login']);
+    if (!this.isSecondStep) {
+      this.router.navigate(['/login']);
+    } else {
+      this.isSecondStep = false
+    }
   }
 
   submit() {
