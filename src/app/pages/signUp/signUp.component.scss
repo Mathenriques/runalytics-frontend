@@ -1,3 +1,5 @@
+@import "../../../styles/variables.scss";
+
 form {
   width: 100%;
   margin-bottom: 45px;
@@ -6,5 +8,10 @@ form {
     display: flex;
     flex-direction: column;
     gap: 13px;
+
+    .password_instructions{
+      color: $white-color;
+      font-size: small;
+    }
   }
 }

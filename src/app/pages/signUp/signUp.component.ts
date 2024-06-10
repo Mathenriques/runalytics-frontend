@@ -80,7 +80,7 @@ export class SignUpComponent {
       weight: ['', [Validators.required]],
       height: ['', [Validators.required]],
       diseases: ['', [Validators.required]],
-      past_injuries: ['',[Validators.required]],
+      past_injuries: [''],
       fitness_level: ['', [Validators.required]],
       isAdmin: [false],
       isOnBalancedDiet: ['', [Validators.required]],

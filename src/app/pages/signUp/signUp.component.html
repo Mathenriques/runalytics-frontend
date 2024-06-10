@@ -38,6 +38,9 @@
         inputName="password"
         type="password">
       </app-primary-input>
+      <div class="password_instructions">
+        Sua senha deve ter de 4 a 8 caracteres
+      </div>
 
       <app-checkbox-select
         [label]="'Gênero'"
@@ -83,7 +86,7 @@
 
       <app-primary-input
         formControlName="past_injuries"
-        label="Ja teve alguma lesão anteriormente?"
+        label="Ja teve alguma lesão anteriormente? Caso não tenha, deixe em branco"
         placeholder="Digite o nome da sua lesão, caso tenha mais separe por virgula"
         inputName="past_injuries"
         type="text">
