@@ -75,19 +75,12 @@ export class SignUpComponent {
           Validators.maxLength(20),
         ],
       ],
-      confirmPassword: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.maxLength(20),
-        ],
-      ],
       birth_date: ['', Validators.required],
       gender: ['', Validators.required],
       weight: ['', [Validators.required]],
       height: ['', [Validators.required]],
-      diseases: [''],
+      diseases: ['', [Validators.required]],
+      past_injuries: [''],
       fitness_level: ['', [Validators.required]],
       isAdmin: [false],
       isOnBalancedDiet: ['', [Validators.required]],
@@ -99,7 +92,11 @@ export class SignUpComponent {
   }
 
   navigate() {
-    this.router.navigate(['/login']);
+    if (!this.isSecondStep) {
+      this.router.navigate(['/login']);
+    } else {
+      this.isSecondStep = false
+    }
   }
 
   submit() {

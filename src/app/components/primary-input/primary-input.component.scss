@@ -6,7 +6,7 @@
   font-size: 14px;
   text-align: start;
   gap: 5px;
-  
+
   input {
     color: $grey-color-70;
     border-radius: 8px;
@@ -20,5 +20,6 @@
 
   label {
     color: $white-color;
+    font-weight: bold;
   }
 }

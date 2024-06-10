@@ -10,6 +10,7 @@
       [isDisabled]="isDisabled"
       [value]="userData.name"
     />
+
     <app-primary-input
       label="Email"
       placeholder="Email"
@@ -18,6 +19,7 @@
       [isDisabled]="isDisabled"
       [value]="userData.email"
     />
+
     <app-primary-input
       label="Data de Nascimento"
       placeholder="Data de Nascimento"
@@ -38,6 +40,7 @@
       [isDisabled]="isDisabled"
       [value]="userData.weight"
     />
+
     <app-primary-input
       label="Altura"
       placeholder="Altura"
@@ -46,14 +49,26 @@
       [isDisabled]="isDisabled"
       [value]="userData.height"
     />
+
+    <app-primary-input
+      label="Lesões Anteriores"
+      placeholder="Lesões Anteriores"
+      inputName="past_injuries"
+      type="text"
+      [isDisabled]="isDisabled"
+      [value]="userData.past_injuries"
+    />
+
     <app-checkbox-select
       [label]="'Nivel de Condicionamento'"
       [options]="conditioningOptions"
-      />
-      <app-checkbox-select
+    />
+
+    <app-checkbox-select
       [label]="'Segue Dieta Balanceada?'"
       [options]="isOnBalancedDietOptions"
     />
+
     <app-checkbox-select
       [label]="'Doenças Crônicas ou Imediatas'"
       [options]="diseasesOptions"

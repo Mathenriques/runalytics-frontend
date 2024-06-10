@@ -39,14 +39,6 @@
         type="password">
       </app-primary-input>
 
-      <app-primary-input
-        formControlName="confirmPassword"
-        label="Confirmar Senha"
-        placeholder="Confirmar Senha"
-        inputName="confirmPassword"
-        type="password">
-      </app-primary-input>
-
       <app-checkbox-select
         [label]="'Gênero'"
         [options]="genderOptions"
@@ -88,6 +80,14 @@
         [options]="diseasesOptions"
         (selectedOptionsChange)="onOptionSelect('diseases', $event)">
       </app-checkbox-select>
+
+      <app-primary-input
+        formControlName="past_injuries"
+        label="Ja teve alguma lesão anteriormente? Caso não tenha, deixe em branco"
+        placeholder="Digite o nome da sua lesão, caso tenha mais separe por virgula"
+        inputName="past_injuries"
+        type="text">
+      </app-primary-input>
     </div>
   </form>
 </app-default-signUp-layout>
