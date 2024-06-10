@@ -17,6 +17,7 @@ export type UserProfileResponse = {
   gender: UserGender;
   birth_date: string;
   diseases: string | null;
+  past_injuries: string | null;
   weight: number | null;
   height: number | null;
   fitness_level: UserFitnessLevel | null;

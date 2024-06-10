@@ -26,6 +26,7 @@ export class UserProfileComponent implements OnInit {
     gender: UserGender.FEMALE,
     birth_date: '00-00-0000',
     diseases: '',
+    past_injuries: '',
     weight: 0,
     height: 0,
     fitness_level: UserFitnessLevel.ADVANCED,
