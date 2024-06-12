@@ -12,13 +12,15 @@ nav {
       gap: 15em;
       margin: 0.5em 0;
 
-      a {
-        border: 0;
-        text-decoration: none;
-        color: $white-color;
+      div {
+        a {
+          border: 0;
+          text-decoration: none;
+          color: $white-color;
+        }
       }
 
-      button, div {
+      .navbar-collapse, button {
         display: none;
       }
     }

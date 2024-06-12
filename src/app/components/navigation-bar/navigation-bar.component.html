@@ -1,26 +1,17 @@
 <header>
-  <nav class="navbar bg-dark border-bottom border-body " data-bs-theme="dark">
+  <nav class="navbar bg-body-tertiary border-bottom border-body " data-bs-theme="dark">
     <div class="container-fluid">
       <a class="navbar-brand">Runalytics</a>
-      <a class="nav-bar-link-wide" href="#">Home</a>
-      <a class="nav-bar-link-wide" href="#">Perfil</a>
-      <a class="nav-bar-link-wide" href="#">Treinos</a>
+        <div *ngFor="let item of navBar">
+          <a class="nav-bar-link-wide" [routerLink]="item.link">{{item.name}}</a>
+        </div>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Perfil</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Histórico de Treinos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Criar novo Treino</a>
+          <li class="nav-item" *ngFor="let item of navBar">
+            <a class="nav-link" [routerLink]="item.link">{{item.name}}</a>
           </li>
         </ul>
       </div>
