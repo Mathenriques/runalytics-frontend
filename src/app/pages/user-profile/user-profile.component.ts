@@ -6,11 +6,12 @@ import { GetUserDataService } from '../../services/get-user-data.service';
 import { UserFitnessLevel, UserGender, UserProfileResponse } from '../../types/user-profile-response.types';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, tap, throwError } from 'rxjs';
+import { NavigationBarComponent } from '../../components/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [PrimaryInputComponent, CheckboxSelectComponent],
+  imports: [PrimaryInputComponent, CheckboxSelectComponent, NavigationBarComponent],
   providers: [GetUserDataService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
