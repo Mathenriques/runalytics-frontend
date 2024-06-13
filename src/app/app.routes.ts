@@ -3,6 +3,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './pages/signUp/signUp.component';
+import { WorkoutCreationComponent } from './pages/workout-creation/workout-creation.component';
 
 export const routes: Routes = [
   {
@@ -21,6 +22,11 @@ export const routes: Routes = [
   {
     path: "user/profile/:id",
     component: UserProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "criar-treino",
+    component: WorkoutCreationComponent,
     canActivate: [AuthGuard]
   }
 ];

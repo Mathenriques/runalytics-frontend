@@ -1,0 +1,51 @@
+<h1>CRIAR NOVA SEMANA DE TREINO</h1>
+
+<form [formGroup]="workoutCreationForm">
+
+  <app-primary-input
+    formControlName="start_date"
+    label="Data de Início"
+    placeholder="start_date"
+    inputName="start_date"
+    type="date"
+  ></app-primary-input>
+
+  <app-primary-input
+    formControlName="end_date"
+    label="Data de Fim"
+    placeholder="end_date"
+    inputName="end_date"
+    type="date"
+  ></app-primary-input>
+
+  <app-primary-input
+    formControlName="weekly_volume"
+    label="Volume de treino semanal (km)"
+    placeholder="Ex: 40"
+    inputName="weekly_volume"
+    type="number"
+  ></app-primary-input>
+
+  <app-primary-input
+    formControlName="strengthening_workouts"
+    label="Quantidade de dias de fortalecimento"
+    placeholder="Ex: 3"
+    inputName="strengthening_workouts"
+    type="number"
+  ></app-primary-input>
+
+  <app-checkbox-select
+    [label]="'Nivel de Estresse Semanal (1 = muito baixo, 10 = muito alto)'"
+    [options]="stress_levels"
+  />
+
+  <app-primary-input
+    formControlName="sleep_hours"
+    label="Média semanal de horas de sono"
+    placeholder="Ex: 8"
+    inputName="sleep_hours"
+    type="number"
+  ></app-primary-input>
+
+  <button class="btn-primary">SALVAR TREINO</button>
+</form>
