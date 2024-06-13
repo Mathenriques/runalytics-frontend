@@ -3,11 +3,12 @@ import { NavigationBarComponent } from '../../components/navigation-bar/navigati
 import { CheckboxSelectComponent } from '../../components/checkbox-select/checkbox-select.component';
 import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TextAreaFieldComponent } from '../../components/text-area-field/text-area-field.component';
 
 @Component({
   selector: 'app-workout-creation',
   standalone: true,
-  imports: [PrimaryInputComponent, CheckboxSelectComponent, NavigationBarComponent, ReactiveFormsModule],
+  imports: [PrimaryInputComponent, CheckboxSelectComponent, NavigationBarComponent, TextAreaFieldComponent, ReactiveFormsModule],
   templateUrl: './workout-creation.component.html',
   styleUrl: './workout-creation.component.scss'
 })
