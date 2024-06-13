@@ -6,11 +6,12 @@ import { GetUserDataService } from '../../services/get-user-data.service';
 import { UserFitnessLevel, UserGender, UserProfileResponse } from '../../types/user-profile-response.types';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, tap, throwError } from 'rxjs';
+import { NavigationBarComponent } from '../../components/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [PrimaryInputComponent, CheckboxSelectComponent],
+  imports: [PrimaryInputComponent, CheckboxSelectComponent, NavigationBarComponent],
   providers: [GetUserDataService],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
@@ -18,8 +19,8 @@ import { catchError, tap, throwError } from 'rxjs';
 export class UserProfileComponent implements OnInit {
   userId: string | null = '';
   isDisabled: boolean = true;
+  userType: string = 'athlete';
   userData: UserProfileResponse = {
-    id: '',
     name: '',
     email: '',
     password_hash: undefined,
@@ -61,13 +62,11 @@ export class UserProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private userDataService: GetUserDataService,
     private toastService: ToastrService
-  ) {}
+  ) {
+    this.userId = this.route.snapshot.paramMap.get('id')
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.userId = params.get('id');
-    });
-
     this.userDataService.getData(this.userId).pipe(
       tap((userProfileResponse: UserProfileResponse) => userProfileResponse),
       catchError((error) => {
@@ -80,6 +79,10 @@ export class UserProfileComponent implements OnInit {
       this.isOnBalancedDietOptions.forEach(label => label.selected = label.value === this.userData.isOnBalancedDiet);
       this.conditioningOptions.forEach(label => label.selected = label.value === this.userData.fitness_level);
       this.diseasesOptions.forEach(label => label.selected = label.value === this.userData.diseases);
+
+      if(this.userData.isAdmin) {
+        this.userType = 'admin';
+      }
     });
   }
 }

@@ -10,7 +10,6 @@ export enum UserFitnessLevel {
 }
 
 export type UserProfileResponse = {
-  id: string;
   name: string;
   email: string;
   password_hash: undefined;

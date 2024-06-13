@@ -1,3 +1,8 @@
+<app-navigation-bar
+  [userType]="userType"
+  [userId]="userId"
+/>
+
 <h1>INFORMAÇÕES DO SEU PERFIL</h1>
 
 <div class="informations">
@@ -31,7 +36,7 @@
 
     <app-checkbox-select [label]="'Genero'" [options]="genderOptions" />
   </div>
-  <div [hidden]="!userData.isAdmin">
+  <div [hidden]="userData.isAdmin">
     <app-primary-input
       label="Peso"
       placeholder="Peso"
