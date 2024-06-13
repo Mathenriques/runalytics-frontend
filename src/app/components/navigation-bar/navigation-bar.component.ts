@@ -16,7 +16,7 @@ type NavLink = {
 })
 export class NavigationBarComponent implements OnChanges {
   @Input() userType: string = 'athlete';
-  @Input() userId: string = '';
+  @Input() userId: string | null = '';
 
   adminNavbar: NavLink[] = [];
   userNavbar: NavLink[] = [];
@@ -31,7 +31,7 @@ export class NavigationBarComponent implements OnChanges {
     ];
 
     this.userNavbar = [
-      // {link: '', name: 'Home'},
+      // {link: '/home', name: 'Home'},
       {link: `/user/profile/${this.userId}`, name: 'Perfil'},
       // {link: '/treinos', name: 'Histórico de Treinos'},
     ]

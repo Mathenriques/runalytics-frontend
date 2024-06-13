@@ -21,7 +21,6 @@ export class UserProfileComponent implements OnInit {
   isDisabled: boolean = true;
   userType: string = 'athlete';
   userData: UserProfileResponse = {
-    id: '',
     name: '',
     email: '',
     password_hash: undefined,
@@ -63,13 +62,11 @@ export class UserProfileComponent implements OnInit {
     private route: ActivatedRoute,
     private userDataService: GetUserDataService,
     private toastService: ToastrService
-  ) {}
+  ) {
+    this.userId = this.route.snapshot.paramMap.get('id')
+  }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe((params) => {
-      this.userId = params.get('id');
-    });
-
     this.userDataService.getData(this.userId).pipe(
       tap((userProfileResponse: UserProfileResponse) => userProfileResponse),
       catchError((error) => {
@@ -86,7 +83,6 @@ export class UserProfileComponent implements OnInit {
       if(this.userData.isAdmin) {
         this.userType = 'admin';
       }
-
     });
   }
 }
