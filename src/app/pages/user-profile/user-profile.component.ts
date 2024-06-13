@@ -19,6 +19,7 @@ import { NavigationBarComponent } from '../../components/navigation-bar/navigati
 export class UserProfileComponent implements OnInit {
   userId: string | null = '';
   isDisabled: boolean = true;
+  userType: string = 'athlete';
   userData: UserProfileResponse = {
     id: '',
     name: '',
@@ -81,6 +82,11 @@ export class UserProfileComponent implements OnInit {
       this.isOnBalancedDietOptions.forEach(label => label.selected = label.value === this.userData.isOnBalancedDiet);
       this.conditioningOptions.forEach(label => label.selected = label.value === this.userData.fitness_level);
       this.diseasesOptions.forEach(label => label.selected = label.value === this.userData.diseases);
+
+      if(this.userData.isAdmin) {
+        this.userType = 'admin';
+      }
+
     });
   }
 }
