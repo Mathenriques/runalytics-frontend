@@ -1,0 +1,11 @@
+<div class="form-group">
+  <label [for]="inputName">{{ label }}</label>
+  <textarea
+    class="form-control"
+    [placeholder]="placeholder"
+    [id]="inputName"
+    [disabled]="isDisabled"
+    (input)="onInput($event)"
+    rows="3"
+  ></textarea>
+</div>
