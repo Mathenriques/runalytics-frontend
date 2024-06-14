@@ -2,6 +2,9 @@
 
 <div class="container main">
   <h1>Histórico de Treinos</h1>
+  <div class="button-create">
+    <button class="btn btn-success" (click)="createWorkout()">NOVO TREINO</button>
+  </div>
   <div class="accordion accordion-flush">
     <div class="accordion-item" *ngFor="let workout of workoutsData">
       <h2 class="accordion-header">

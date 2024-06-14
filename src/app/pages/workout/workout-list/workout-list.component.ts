@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { GetAllWorkoutsService } from '../../../services/get-all-workouts.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workout-list',
@@ -25,7 +26,8 @@ export class WorkoutListComponent {
     private decodeJwtTokenService: DecodeJwtTokenService,
     private getAllWorkoutsService: GetAllWorkoutsService,
     private toastService: ToastrService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private router: Router,
   ) {
     const { sub, isAdmin } = this.decodeJwtTokenService.execute();
     this.userId = sub;
@@ -70,5 +72,9 @@ export class WorkoutListComponent {
     }
 
     return data;
+  }
+
+  createWorkout() {
+    this.router.navigate(['/criar-treino'])
   }
 }
