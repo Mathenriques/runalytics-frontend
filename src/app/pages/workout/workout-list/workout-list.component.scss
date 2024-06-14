@@ -17,11 +17,18 @@ h1 {
     &:not(.collapsed) {
       background-color: $primary-color !important;
       color: $white-color;
+      font-weight: bold;
     }
   }
 
   .display-flex {
     display: flex;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 3em;
   }
 }
 
