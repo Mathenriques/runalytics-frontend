@@ -4,6 +4,7 @@ import { UserProfileComponent } from './pages/user/user-profile/user-profile.com
 import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './pages/signUp/signUp.component';
 import { WorkoutCreationComponent } from './pages/workout/workout-creation/workout-creation.component';
+import { WorkoutListComponent } from './pages/workout/workout-list/workout-list.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +28,11 @@ export const routes: Routes = [
   {
     path: "criar-treino",
     component: WorkoutCreationComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: "treinos",
+    component: WorkoutListComponent,
     canActivate: [AuthGuard]
   }
 ];

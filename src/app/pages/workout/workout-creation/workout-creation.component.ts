@@ -26,8 +26,6 @@ export class WorkoutCreationComponent {
   userId: string = ''
   userType: string = 'athlete'
 
-
-
   stress_levels = [
     { label: '1', value: '1' },
     { label: '2', value: '2' },
@@ -66,7 +64,7 @@ export class WorkoutCreationComponent {
       user_id: sub
     })
 
-    if(isAdmin) {
+    if (isAdmin) {
       this.userType = 'admin';
     }
 

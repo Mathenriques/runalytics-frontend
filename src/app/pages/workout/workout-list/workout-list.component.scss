@@ -1,0 +1,22 @@
+@import '../../../../styles/variables.scss';
+
+h1 {
+  color: $white-color;
+  font-size: 18px!important;
+  text-align: center;
+  justify-content: center;
+  padding: 75px 0 40px 0;
+}
+
+.accordion-item {
+  border-radius: 8px !important;
+
+  .accordion-button {
+    border-radius: 8px !important;
+
+    &:not(.collapsed) {
+      background-color: $primary-color !important;
+      color: $white-color;
+    }
+  }
+}
