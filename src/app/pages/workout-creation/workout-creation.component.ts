@@ -23,6 +23,10 @@ import { DecodeJwtTokenService } from '../../services/decode-jwt-token.service';
 })
 export class WorkoutCreationComponent {
   workoutCreationForm: FormGroup;
+  userId: string = ''
+  userType: string = 'athlete'
+
+  
 
   stress_levels = [
     { label: '1', value: '1' },
@@ -47,7 +51,8 @@ export class WorkoutCreationComponent {
     private toastService: ToastrService,
     private fb: FormBuilder,
   ) {
-    const { sub } = this.decodeJwtTokenService.execute();
+    const { sub, isAdmin } = this.decodeJwtTokenService.execute();
+    this.userId = sub;
 
     this.workoutCreationForm = this.fb.group({
       start_date: ['', [Validators.required]],
@@ -60,6 +65,10 @@ export class WorkoutCreationComponent {
       pain_discomfort: ['', [Validators.required]],
       user_id: sub
     })
+
+    if(isAdmin) {
+      this.userType = 'admin';
+    }
 
   }
 
