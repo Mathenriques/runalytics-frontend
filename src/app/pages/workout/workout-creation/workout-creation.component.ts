@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { NavigationBarComponent } from '../../components/navigation-bar/navigation-bar.component';
-import { CheckboxSelectComponent } from '../../components/checkbox-select/checkbox-select.component';
-import { PrimaryInputComponent } from '../../components/primary-input/primary-input.component';
+import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
+import { CheckboxSelectComponent } from '../../../components/checkbox-select/checkbox-select.component';
+import { PrimaryInputComponent } from '../../../components/primary-input/primary-input.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { TextAreaFieldComponent } from '../../components/text-area-field/text-area-field.component';
-import { CreateWorkoutService } from '../../services/create-workout.service';
+import { TextAreaFieldComponent } from '../../../components/text-area-field/text-area-field.component';
+import { CreateWorkoutService } from '../../../services/create-workout.service';
 import { ToastrService } from 'ngx-toastr';
-import { OptionsSelect } from '../../types/options-select.types';
-import { DecodeJwtTokenService } from '../../services/decode-jwt-token.service';
+import { OptionsSelect } from '../../../types/options-select.types';
+import { DecodeJwtTokenService } from '../../../services/decode-jwt-token.service';
 
 @Component({
   selector: 'app-workout-creation',
@@ -26,7 +26,7 @@ export class WorkoutCreationComponent {
   userId: string = ''
   userType: string = 'athlete'
 
-  
+
 
   stress_levels = [
     { label: '1', value: '1' },
