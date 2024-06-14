@@ -55,4 +55,20 @@ export class WorkoutListComponent {
 
     return `${formattedStartDate} à ${formattedEndDate}`;
   }
+
+  transformWorkoutMyofascialRelease(data: boolean): string {
+    if (data) {
+      return 'Sim';
+    } else {
+      return 'Não';
+    }
+  }
+
+  transformPainDiscomfort(data: string): string {
+    if (!data) {
+      return 'Não';
+    }
+
+    return data;
+  }
 }

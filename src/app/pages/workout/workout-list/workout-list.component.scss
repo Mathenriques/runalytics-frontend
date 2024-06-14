@@ -19,4 +19,22 @@ h1 {
       color: $white-color;
     }
   }
+
+  .display-flex {
+    display: flex;
+  }
+}
+
+
+@media (min-width: 768px) {
+  .display-flex {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
+
+@media (max-width: 425px) {
+  .display-flex {
+    flex-direction: column;
+  }
 }
