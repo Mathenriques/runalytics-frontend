@@ -35,8 +35,15 @@
   ></app-primary-input>
 
   <app-checkbox-select
+    [label]="'Fez Liberação Miofascial?'"
+    [options]="miofascial_releases"
+    (selectedOptionsChange)="onOptionSelect('didMyofascialRelease', $event)"
+  />
+
+  <app-checkbox-select
     [label]="'Nivel de Estresse Semanal (1 = muito baixo, 10 = muito alto)'"
     [options]="stress_levels"
+    (selectedOptionsChange)="onOptionSelect('stress_level', $event)"
   />
 
   <app-primary-input
@@ -54,5 +61,5 @@
     inputName="pain_discomfort"
   />
 
-  <button class="btn-primary">SALVAR TREINO</button>
+  <button class="btn-primary" (click)="submit()">SALVAR TREINO</button>
 </form>
