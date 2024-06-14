@@ -5,7 +5,7 @@
   <div class="button-create">
     <button class="btn btn-success" (click)="createWorkout()">NOVO TREINO</button>
   </div>
-  <div class="accordion accordion-flush">
+  <div class="accordion accordion-flush" *ngIf="workoutsData.length > 0">
     <div class="accordion-item" *ngFor="let workout of workoutsData">
       <h2 class="accordion-header">
         <button
@@ -56,12 +56,16 @@
               </p>
             </div>
           </div>
-          <!-- <div class="buttons">
-            <button class="btn btn-warning">EDITAR</button>
-            <button class="btn btn-danger">DELETAR</button>
-          </div> -->
+          <div class="buttons">
+            <!-- <button class="btn btn-warning">EDITAR</button>
+            <button class="btn btn-danger">DELETAR</button> -->
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="workoutsData.length === 0">
+    <h3>Infelizmente você não cadastrou nenhuma semana de treino ainda, clique no botão acima e cadastre!</h3>
   </div>
 </div>
