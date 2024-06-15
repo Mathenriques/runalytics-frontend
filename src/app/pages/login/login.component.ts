@@ -34,7 +34,7 @@ export class LoginComponent {
 
   submit() {
     this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
-      next: (id) => this.router.navigate([`user/profile/${id}`]),
+      next: () => this.router.navigate(['treinos']),
       error: () =>  this.toastService.error('Error ao fazer login, tente mais tarde')
     });
   }

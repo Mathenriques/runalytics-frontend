@@ -33,7 +33,7 @@ export class NavigationBarComponent implements OnChanges {
     this.userNavbar = [
       // {link: '/home', name: 'Home'},
       {link: `/user/profile/${this.userId}`, name: 'Perfil'},
-      {link: '/criar-treino', name: 'Histórico de Treinos'},
+      {link: '/treinos', name: 'Treinos'},
     ]
     if (this.userType === 'admin') {
       this.navBar = this.adminNavbar;
