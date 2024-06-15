@@ -6,6 +6,7 @@ import { GetAllWorkoutsService } from '../../../services/get-all-workouts.servic
 import { catchError, tap, throwError } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
+import { DeleteWorkoutService } from '../../../services/delete-workout.service';
 
 @Component({
   selector: 'app-workout-list',
@@ -25,6 +26,7 @@ export class WorkoutListComponent {
   constructor(
     private decodeJwtTokenService: DecodeJwtTokenService,
     private getAllWorkoutsService: GetAllWorkoutsService,
+    private deleteWorkoutService: DeleteWorkoutService,
     private toastService: ToastrService,
     private datePipe: DatePipe,
     private router: Router,
@@ -77,4 +79,21 @@ export class WorkoutListComponent {
   createWorkout() {
     this.router.navigate(['/criar-treino'])
   }
+
+  deleteWorkout(id: string) {
+    console.log(id)
+    this.deleteWorkoutService.execute(id).pipe(
+      tap((workoutResponse: any) => workoutResponse),
+      catchError((error) => {
+        this.toastService.error('Ocorreu um erro ao deletar o treino');
+        return throwError(() => error);
+      })
+    ).subscribe(() => {
+      this.toastService.success('Treino deletado com sucesso');
+      this.workoutsData = this.workoutsData.filter(item => item.id != id);
+      id = '';
+
+    });
+  }
+
 }
