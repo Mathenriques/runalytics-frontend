@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class GetUserDataService {
-  apiUrl: string = `${environment.apiURL}/workouts/`
+  apiUrl: string = `${environment.apiURL}/users/`
 
   constructor(private httpClient: HttpClient) {}
 
