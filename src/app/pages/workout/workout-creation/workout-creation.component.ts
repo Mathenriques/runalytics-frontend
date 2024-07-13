@@ -8,6 +8,7 @@ import { CreateWorkoutService } from '../../../services/create-workout.service';
 import { ToastrService } from 'ngx-toastr';
 import { OptionsSelect } from '../../../types/options-select.types';
 import { DecodeJwtTokenService } from '../../../services/decode-jwt-token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-workout-creation',
@@ -45,6 +46,7 @@ export class WorkoutCreationComponent {
 
   constructor(
     private createWorkoutService: CreateWorkoutService,
+    private router: Router,
     private decodeJwtTokenService: DecodeJwtTokenService,
     private toastService: ToastrService,
     private fb: FormBuilder,
@@ -74,11 +76,15 @@ export class WorkoutCreationComponent {
     this.workoutCreationForm.controls[field].setValue(selectedOptions.value);
   }
 
+  navigate() {
+    this.router.navigate(['/treinos'])
+  }
+
   submit() {
     this.createWorkoutService.createWorkout(this.workoutCreationForm.value).subscribe({
       next: () => {
         this.toastService.success('Registro feito com sucesso!');
-        // this.navigate();
+        this.navigate();
       },
       error: () =>
         this.toastService.error(
