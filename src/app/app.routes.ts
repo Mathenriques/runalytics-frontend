@@ -5,6 +5,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { SignUpComponent } from './pages/signUp/signUp.component';
 import { WorkoutCreationComponent } from './pages/workout/workout-creation/workout-creation.component';
 import { WorkoutListComponent } from './pages/workout/workout-list/workout-list.component';
+import { ListUsersComponent } from './pages/admin/list-users/list-users.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
   {
     path: "treinos",
     component: WorkoutListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path:"admin/usuarios-ativos",
+    component: ListUsersComponent,
     canActivate: [AuthGuard]
   }
 ];

@@ -26,7 +26,7 @@ export class NavigationBarComponent implements OnChanges {
     this.adminNavbar = [
       // {link: '', name: 'Home'},
       {link: `/user/profile/${this.userId}`, name: 'Perfil'},
-      {link: '', name: 'Atletas'},
+      {link: '/admin/usuarios-ativos', name: 'Atletas'},
       {link: '', name: 'Cadastrar Novo Administrador'},
     ];
 
