@@ -6,8 +6,13 @@
 
 <div class="container">
 
+  <div class="container input-group">
+    <span class="input-group-text" id="basic-addon1"><i class="bi bi-search"></i></span>
+    <input type="text" class="form-control" placeholder="Digite o nome do atleta" aria-label="nome" aria-describedby="basic-addon1">
+  </div>
+
   <div class="board-cards">
-    <div class="card" *ngFor="let user of users">
+    <div class="card" *ngFor="let user of usersPaginated">
       <div class="card-body">
         <h5 class="card-title">{{user.name}}</h5>
         <a class="btn btn-primary">Ver Treinos</a>

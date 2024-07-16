@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { GetAllAthletesService } from '../../../services/get-all-athletes.service';
 import { User } from '../../../types/get-all-users-response.types';
@@ -15,11 +15,14 @@ import { CommonModule } from '@angular/common';
   styleUrl: './list-users.component.scss'
 })
 export class ListUsersComponent {
+  @Input() searchName: string = '';
+
   userId: string | null = '';
   isDisabled: boolean = true;
   userType: string = 'admin';
   totalUsers: number = 100;
   users: User[] = [];
+  usersPaginated: User[] = [];
   list: number[] = []
 
   constructor(
@@ -30,7 +33,6 @@ export class ListUsersComponent {
   }
 
   loadUsers(page: number): void {
-    console.log('page', page);
     this.getUsersService.execute(page).pipe(
       tap((workoutResponse: any) => workoutResponse),
       catchError((error) => {
@@ -42,11 +44,18 @@ export class ListUsersComponent {
       const pages = Math.ceil(this.totalUsers / 10);
       this.users = response.data;
       this.list = [...Array(pages).keys()].map(i => i + 1);
+      this.paginateUsers(page)
     });
   }
 
   onChangePage(page: number): void {
-    console.log('page', page);
-    this.loadUsers(page);
+    this.paginateUsers(page);
+  }
+
+  paginateUsers(page: number): void {
+    const startIndex = (page - 1) * 10;
+    const endIndex = startIndex + 10;
+
+    this.usersPaginated = this.users.slice(startIndex, endIndex)
   }
 }

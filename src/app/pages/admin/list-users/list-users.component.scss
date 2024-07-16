@@ -20,7 +20,7 @@
     gap: 30px;
   
     .card {
-      flex: 0 1 calc(35% - 8px);
+      flex: 1 1 calc(35% - 8px);
     }
   } 
 }
@@ -28,9 +28,13 @@
 @media (max-width: 425px) {
   .board-cards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     place-content: center;
     padding: 20px 0;
     gap: 30px;
-  } 
+  
+    .card {
+      flex: 1 1 calc(55% - 8px);
+    }
+  }
 }
