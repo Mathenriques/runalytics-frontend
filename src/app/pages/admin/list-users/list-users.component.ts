@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { GetAllAthletesService } from '../../../services/get-all-athletes.service';
 import { User } from '../../../types/get-all-users-response.types';
@@ -26,7 +26,12 @@ export class ListUsersComponent {
     private getUsersService: GetAllAthletesService,
     private toastService: ToastrService
   ) {
-    this.getUsersService.execute(1, 10).pipe(
+    this.loadUsers(1);
+  }
+
+  loadUsers(page: number): void {
+    console.log('page', page);
+    this.getUsersService.execute(page).pipe(
       tap((workoutResponse: any) => workoutResponse),
       catchError((error) => {
         this.toastService.error('Ocorreu um erro ao buscar os treinos');
@@ -34,10 +39,14 @@ export class ListUsersComponent {
       })
     ).subscribe((response) => {
       this.totalUsers = response.count;
+      const pages = Math.ceil(this.totalUsers / 10);
       this.users = response.data;
-      this.list = [...Array(5).keys()].map(i => i + 1);
+      this.list = [...Array(pages).keys()].map(i => i + 1);
     });
+  }
 
-
+  onChangePage(page: number): void {
+    console.log('page', page);
+    this.loadUsers(page);
   }
 }
