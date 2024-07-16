@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
 import { UserProfileComponent } from './pages/user/user-profile/user-profile.component';
-import { AuthGuard } from './services/auth-guard.service';
+import { AuthGuard } from './services/guards/auth-guard.service';
 import { SignUpComponent } from './pages/signUp/signUp.component';
 import { WorkoutCreationComponent } from './pages/workout/workout-creation/workout-creation.component';
 import { WorkoutListComponent } from './pages/workout/workout-list/workout-list.component';

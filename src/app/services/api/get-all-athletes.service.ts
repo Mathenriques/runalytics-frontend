@@ -1,8 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 import { finalize, Observable } from 'rxjs';
-import { GetAllUsersResponse } from '../types/get-all-users-response.types';
+import { GetAllUsersResponse } from '../../types/get-all-users-response.types';
 
 @Injectable({
   providedIn: 'root'

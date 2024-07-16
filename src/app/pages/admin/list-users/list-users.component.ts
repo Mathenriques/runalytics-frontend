@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
-import { GetAllAthletesService } from '../../../services/get-all-athletes.service';
+import { GetAllAthletesService } from '../../../services/api/get-all-athletes.service';
 import { User } from '../../../types/get-all-users-response.types';
 import { catchError, tap, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';

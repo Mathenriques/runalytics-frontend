@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { DecodeJwtTokenService } from '../../../services/decode-jwt-token.service';
+import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { ToastrService } from 'ngx-toastr';
-import { GetAllWorkoutsService } from '../../../services/get-all-workouts.service';
+import { GetAllWorkoutsService } from '../../../services/api/get-all-workouts.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { DeleteWorkoutService } from '../../../services/delete-workout.service';
+import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
 
 @Component({
   selector: 'app-workout-list',
