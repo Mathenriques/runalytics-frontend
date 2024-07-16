@@ -1,21 +1,28 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { GetAllAthletesService } from '../../../services/get-all-athletes.service';
 import { User } from '../../../types/get-all-users-response.types';
 import { catchError, tap, throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
+import { SearchFilterComponent } from '../../../components/search-filter/search-filter.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-list-users',
   standalone: true,
-  imports: [NavigationBarComponent, CommonModule],
+  imports: [
+    NavigationBarComponent,
+    CommonModule,
+    SearchFilterComponent,
+    FormsModule
+  ],
   providers: [GetAllAthletesService],
   templateUrl: './list-users.component.html',
-  styleUrl: './list-users.component.scss'
+  styleUrls: ['./list-users.component.scss']
 })
 export class ListUsersComponent {
-  @Input() searchName: string = '';
+  searchName: string = '';
 
   userId: string | null = '';
   isDisabled: boolean = true;
@@ -32,6 +39,19 @@ export class ListUsersComponent {
     this.loadUsers(1);
   }
 
+  onChildInputChange(newValue: string) {
+    this.searchName = newValue;
+    if (this.searchName !== '') {
+      this.isDisabled = false;
+      this.usersPaginated = this.users.filter(user =>
+        user.name.toLowerCase().includes(this.searchName.toLowerCase())
+      );
+    } else {
+      this.isDisabled = true;
+      this.loadUsers(1);
+    }
+  }
+
   loadUsers(page: number): void {
     this.getUsersService.execute(page).pipe(
       tap((workoutResponse: any) => workoutResponse),
@@ -44,7 +64,7 @@ export class ListUsersComponent {
       const pages = Math.ceil(this.totalUsers / 10);
       this.users = response.data;
       this.list = [...Array(pages).keys()].map(i => i + 1);
-      this.paginateUsers(page)
+      this.paginateUsers(page);
     });
   }
 
@@ -56,6 +76,6 @@ export class ListUsersComponent {
     const startIndex = (page - 1) * 10;
     const endIndex = startIndex + 10;
 
-    this.usersPaginated = this.users.slice(startIndex, endIndex)
+    this.usersPaginated = this.users.slice(startIndex, endIndex);
   }
 }
