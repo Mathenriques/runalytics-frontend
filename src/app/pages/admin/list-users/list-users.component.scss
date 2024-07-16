@@ -1,1 +1,25 @@
+.board-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap-reverse;
+  place-content: center;
+  padding: 20px 0;
 
+  .card {
+    width: 180px!important;
+  }
+}
+
+@media (max-width: 768px) {
+  .board-cards {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    padding: 20px 0;
+    gap: 30px;
+  
+    .card {
+      width: 180px!important;
+    }
+  } 
+}
