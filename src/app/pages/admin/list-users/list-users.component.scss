@@ -1,25 +1,36 @@
 .board-cards {
   display: flex;
   gap: 30px;
-  flex-wrap: wrap-reverse;
+  flex-wrap: wrap;
   place-content: center;
   padding: 20px 0;
 
   .card {
     width: 180px!important;
+    flex: 0 1 calc(18% - 8px);
   }
 }
 
 @media (max-width: 768px) {
   .board-cards {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     place-content: center;
     padding: 20px 0;
     gap: 30px;
   
     .card {
-      width: 180px!important;
+      flex: 0 1 calc(35% - 8px);
     }
+  } 
+}
+
+@media (max-width: 425px) {
+  .board-cards {
+    display: flex;
+    flex-direction: column;
+    place-content: center;
+    padding: 20px 0;
+    gap: 30px;
   } 
 }
