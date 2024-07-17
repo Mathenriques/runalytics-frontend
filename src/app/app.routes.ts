@@ -7,12 +7,17 @@ import { WorkoutCreationComponent } from './pages/workout/workout-creation/worko
 import { WorkoutListComponent } from './pages/workout/workout-list/workout-list.component';
 import { ListUsersComponent } from './pages/admin/list-users/list-users.component';
 import { AuthAdminGuard } from './services/guards/auth-admin-guard.service';
+import { RestorePasswordComponent } from './pages/restore-password/restore-password.component';
 
 export const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
     redirectTo: "login"
+  },
+  {
+    path: "recuperar-senha",
+    component: RestorePasswordComponent,
   },
   {
     path: "login",
