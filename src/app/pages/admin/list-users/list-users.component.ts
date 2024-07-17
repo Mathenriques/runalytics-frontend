@@ -7,6 +7,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../../components/search-filter/search-filter.component';
 import { FormsModule } from '@angular/forms';
+import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 
 @Component({
   selector: 'app-list-users',
@@ -17,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     SearchFilterComponent,
     FormsModule
   ],
-  providers: [GetAllAthletesService],
+  providers: [GetAllAthletesService, DecodeJwtTokenService],
   templateUrl: './list-users.component.html',
   styleUrls: ['./list-users.component.scss']
 })
@@ -34,8 +35,11 @@ export class ListUsersComponent {
 
   constructor(
     private getUsersService: GetAllAthletesService,
-    private toastService: ToastrService
+    private toastService: ToastrService,
+    private decodeJwtTokenService: DecodeJwtTokenService
   ) {
+    const { sub } = this.decodeJwtTokenService.execute();
+    this.userId = sub;
     this.loadUsers(1);
   }
 
