@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { LoginResponse } from '../types/login-response.types';
+import { LoginResponse } from '../../types/login-response.types';
 import { map } from 'rxjs';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({

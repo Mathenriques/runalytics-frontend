@@ -4,10 +4,10 @@ import { CheckboxSelectComponent } from '../../../components/checkbox-select/che
 import { PrimaryInputComponent } from '../../../components/primary-input/primary-input.component';
 import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TextAreaFieldComponent } from '../../../components/text-area-field/text-area-field.component';
-import { CreateWorkoutService } from '../../../services/create-workout.service';
+import { CreateWorkoutService } from '../../../services/api/create-workout.service';
 import { ToastrService } from 'ngx-toastr';
 import { OptionsSelect } from '../../../types/options-select.types';
-import { DecodeJwtTokenService } from '../../../services/decode-jwt-token.service';
+import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { Router } from '@angular/router';
 
 @Component({

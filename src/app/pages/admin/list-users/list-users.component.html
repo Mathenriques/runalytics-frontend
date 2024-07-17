@@ -1,0 +1,40 @@
+<app-navigation-bar
+  [userType]="userType"
+  [userId]="userId"
+></app-navigation-bar>
+<h1>Usuários Ativos</h1>
+
+<div class="container">
+  <app-search-filter
+    [(inputValue)]="searchName"
+    (inputValueChange)="onChildInputChange($event)"
+  ></app-search-filter>
+
+  <div *ngIf="!isDisabled">
+    <div class="board-cards">
+      <div class="card" *ngFor="let user of usersPaginated">
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}}</h5>
+          <a class="btn btn-primary">Ver Treinos</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isDisabled">
+    <div class="board-cards">
+      <div class="card" *ngFor="let user of usersPaginated">
+        <div class="card-body">
+          <h5 class="card-title">{{user.name}}</h5>
+          <a class="btn btn-primary">Ver Treinos</a>
+        </div>
+      </div>
+    </div>
+
+    <ul class="pagination justify-content-center">
+      <li class="page-item" *ngFor="let number of list">
+        <button type="button" class="page-link" (click)="onChangePage(number)">{{ number }}</button>
+      </li>
+    </ul>
+  </div>
+</div>

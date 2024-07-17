@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { CreateWorkoutResponse } from '../types/create-workout-response.types';
-import { environment } from '../../environments/environment';
+import { CreateWorkoutResponse } from '../../types/create-workout-response.types';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

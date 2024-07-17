@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { PrimaryInputComponent } from '../../../components/primary-input/primary-input.component';
 import { CheckboxSelectComponent } from '../../../components/checkbox-select/checkbox-select.component';
 import { ActivatedRoute } from '@angular/router';
-import { GetUserDataService } from '../../../services/get-user-data.service';
+import { GetUserDataService } from '../../../services/api/get-user-data.service';
 import { UserFitnessLevel, UserGender, UserProfileResponse } from '../../../types/user-profile-response.types';
 import { ToastrService } from 'ngx-toastr';
 import { catchError, tap, throwError } from 'rxjs';
