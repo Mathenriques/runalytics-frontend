@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { SendEmailService } from '../../services/api/send-email.service';
+import { ValidateCodeService } from '../../services/api/validate-code.service';
 
 @Component({
   selector: 'app-restore-password',
@@ -12,6 +13,7 @@ import { SendEmailService } from '../../services/api/send-email.service';
   imports: [PrimaryInputComponent, CommonModule, ReactiveFormsModule],
   providers: [
     SendEmailService,
+    ValidateCodeService,
     { provide: ToastrService, useClass: ToastrService },
   ],
   templateUrl: './restore-password.component.html',
@@ -28,6 +30,7 @@ export class RestorePasswordComponent {
   constructor(
     private router: Router,
     private sendEmailService: SendEmailService,
+    private validateCodeService: ValidateCodeService,
     private toastService: ToastrService
   ) {
     this.emailForm = new FormGroup({
@@ -40,15 +43,29 @@ export class RestorePasswordComponent {
   }
 
   sendEmail() {
-    console.log(this.emailForm.value.email);
     this.sendEmailService.execute(this.emailForm.value.email).subscribe({
       next: () => {
-        this.firstStep = false;
-        this.secondStep = true;
+        this.toastService.success('Email enviado com sucesso');
+        setTimeout(() => {
+          this.firstStep = false;
+          this.secondStep = true;
+        }, 1300);
       },
-      error: () =>  this.toastService.error('Error ao enviar email, tente mais tarde') 
+      error: () =>  this.toastService.error('Email informado inválido') 
     })
-    
+  }
+
+  verifyCode() {
+    this.validateCodeService.execute(this.codeForm.value.code).subscribe({
+      next: () => {
+        this.toastService.success('Codigo correto!');
+        setTimeout(() => {
+          // this.firstStep = false;
+          // this.secondStep = true;
+        }, 1300);
+      },
+      error: () =>  this.toastService.error('Codigo informado inválido') 
+    })
   }
 
   back() {
