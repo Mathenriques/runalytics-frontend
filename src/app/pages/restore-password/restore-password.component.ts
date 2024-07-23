@@ -23,6 +23,7 @@ export class RestorePasswordComponent {
 
   emailForm: FormGroup;
   codeForm: FormGroup;
+  passwordForm: FormGroup;
 
   firstStep: boolean = true;
   secondStep: boolean = false;
@@ -40,19 +41,26 @@ export class RestorePasswordComponent {
     this.codeForm = new FormGroup({
       code: new FormControl('', [Validators.required])
     });
+    
+    this.passwordForm = new FormGroup({
+      password: new FormControl('', [Validators.required])
+    });
   }
 
   sendEmail() {
-    this.sendEmailService.execute(this.emailForm.value.email).subscribe({
-      next: () => {
-        this.toastService.success('Email enviado com sucesso');
-        setTimeout(() => {
-          this.firstStep = false;
-          this.secondStep = true;
-        }, 1300);
-      },
-      error: () =>  this.toastService.error('Email informado inválido') 
-    })
+    this.firstStep = false;
+    this.secondStep = true;
+
+    // this.sendEmailService.execute(this.emailForm.value.email).subscribe({
+    //   next: () => {
+    //     this.toastService.success('Email enviado com sucesso');
+    //     setTimeout(() => {
+    //       this.firstStep = false;
+    //       this.secondStep = true;
+    //     }, 1300);
+    //   },
+    //   error: () =>  this.toastService.error('Email informado inválido') 
+    // })
   }
 
   verifyCode() {
@@ -60,8 +68,21 @@ export class RestorePasswordComponent {
       next: () => {
         this.toastService.success('Codigo correto!');
         setTimeout(() => {
-          // this.firstStep = false;
-          // this.secondStep = true;
+          this.firstStep = false;
+          this.secondStep = false;
+        }, 1300);
+      },
+      error: () =>  this.toastService.error('Codigo informado inválido') 
+    })
+  }
+  
+  changePassword() {
+    this.validateCodeService.execute(this.codeForm.value.code).subscribe({
+      next: () => {
+        this.toastService.success('Codigo correto!');
+        setTimeout(() => {
+          this.firstStep = false;
+          this.secondStep = false;
         }, 1300);
       },
       error: () =>  this.toastService.error('Codigo informado inválido') 
@@ -69,10 +90,13 @@ export class RestorePasswordComponent {
   }
 
   back() {
-    if (!this.firstStep) {
+    if (!this.firstStep && this.secondStep) {
       this.firstStep = true;
       this.secondStep = false;
 
+    } else if (!this.firstStep && !this.secondStep) {
+      this.firstStep = false;
+      this.secondStep = true;
     } else {
       this.router.navigate(['/login'])
     }
