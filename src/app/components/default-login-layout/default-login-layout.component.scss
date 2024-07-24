@@ -26,7 +26,8 @@ main {
       text-transform: uppercase;
 
       h1 {
-        font-size: 40px;
+        font-size: 40px !important;
+        text-align: left;
         font-weight: bold;
         color: $white-color !important;
         padding: 0 0 0 98px;
