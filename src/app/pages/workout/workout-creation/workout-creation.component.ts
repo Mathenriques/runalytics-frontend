@@ -40,8 +40,8 @@ export class WorkoutCreationComponent {
     { label: '10', value: '10' },
   ]
   miofascial_releases = [
-    { label: 'Sim', value: 'true' },
-    { label: 'Não', value: 'false' },
+    { label: 'Sim', value: true },
+    { label: 'Não', value: false },
   ];
 
   constructor(
