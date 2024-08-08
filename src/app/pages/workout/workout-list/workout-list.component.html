@@ -38,6 +38,12 @@
               <p>
                 <strong>Nível de Estresse:</strong> {{ workout.stress_level }}
               </p>
+              <p>
+                <strong>Seguiu uma dieta saudável?</strong>
+                {{
+                  transformDietLevelIntoText(workout.diet_level)
+                }}
+              </p>
             </div>
             <div>
               <p>

@@ -67,6 +67,16 @@ export class WorkoutListComponent {
       return 'Não';
     }
   }
+  
+  transformDietLevelIntoText(data: number): string {
+    if (data === 1) {
+      return 'Não segui nada';
+    } else if(data === 2){
+      return 'Segui por volta de 50%';
+    } else {
+      return 'Segui de 80% a 100% da dieta';
+    }
+  }
 
   transformPainDiscomfort(data: string): string {
     if (!data) {
