@@ -38,7 +38,14 @@ export class WorkoutCreationComponent {
     { label: '8', value: '8' },
     { label: '9', value: '9' },
     { label: '10', value: '10' },
-  ]
+  ];
+
+  diet_levels = [
+    {label: 'Não segui nada', value: '1'},
+    {label: 'Segui por volta de 50%', value: '2'},
+    {label: 'Segui de 80% a 100% da dieta', value: '3'},
+  ];
+
   miofascial_releases = [
     { label: 'Sim', value: true },
     { label: 'Não', value: false },
