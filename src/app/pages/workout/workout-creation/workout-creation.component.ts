@@ -67,6 +67,7 @@ export class WorkoutCreationComponent {
       weekly_volume: ['', [Validators.required]],
       strengthening_workouts: ['', [Validators.required]],
       stress_level: ['', [Validators.required, Validators.min(1), Validators.max(10)]],
+      diet_level: ['', [Validators.required]],
       sleep_hours: ['', [Validators.required]],
       didMyofascialRelease: ['', [Validators.required]],
       pain_discomfort: ['', [Validators.required]],
@@ -76,7 +77,6 @@ export class WorkoutCreationComponent {
     if (isAdmin) {
       this.userType = 'admin';
     }
-
   }
 
   onOptionSelect(field: any, selectedOptions: OptionsSelect) {

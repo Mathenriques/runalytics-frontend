@@ -67,7 +67,7 @@ export class WorkoutListComponent {
       return 'Não';
     }
   }
-  
+
   transformDietLevelIntoText(data: number): string {
     if (data === 1) {
       return 'Não segui nada';
