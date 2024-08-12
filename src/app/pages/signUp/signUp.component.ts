@@ -52,7 +52,7 @@ export class SignUpComponent {
     { label: 'Diabetes', value: 'diabetes' },
     { label: 'Pressão Alta', value: 'highPressure' },
     { label: 'Pressão Baixa', value: 'lowPressure' },
-    { label: 'Nenhuma', value: '0' },
+    { label: 'Nenhuma', value: 'nada' },
   ];
 
   signUpForm: FormGroup;
