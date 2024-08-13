@@ -43,6 +43,11 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: "treinos/:athlete-id",
+    component: WorkoutListComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path:"admin/usuarios-ativos",
     component: ListUsersComponent,
     canActivate: [AuthAdminGuard]
