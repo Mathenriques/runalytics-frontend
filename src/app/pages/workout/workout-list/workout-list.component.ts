@@ -5,8 +5,9 @@ import { ToastrService } from 'ngx-toastr';
 import { GetAllWorkoutsService } from '../../../services/api/get-all-workouts.service';
 import { catchError, tap, throwError } from 'rxjs';
 import { CommonModule, DatePipe } from '@angular/common';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
+import { GetUserDataService } from '../../../services/api/get-user-data.service';
 
 @Component({
   selector: 'app-workout-list',
@@ -22,17 +23,36 @@ export class WorkoutListComponent {
   userId: string = ''
   userType: string = 'athlete'
   workoutsData: any[] = []
+  paramAthleteIdExists: string | null = null;
+  userName: string | null = null;
 
   constructor(
     private decodeJwtTokenService: DecodeJwtTokenService,
     private getAllWorkoutsService: GetAllWorkoutsService,
+    private getUserDataService: GetUserDataService,
     private deleteWorkoutService: DeleteWorkoutService,
     private toastService: ToastrService,
     private datePipe: DatePipe,
     private router: Router,
+    private route: ActivatedRoute
   ) {
     const { sub, isAdmin } = this.decodeJwtTokenService.execute();
-    this.userId = sub;
+    this.paramAthleteIdExists = this.route.snapshot.paramMap.get('athlete-id');
+
+    if (this.paramAthleteIdExists) {
+      this.userId = this.paramAthleteIdExists
+      this.getUserDataService.getData(this.userId).pipe(
+        tap((workoutResponse: any) => workoutResponse),
+        catchError((error) => {
+          this.toastService.error('Ocorreu um erro ao buscar os dados do usuário');
+          return throwError(() => error);
+        })
+      ).subscribe((response) => {
+        this.userName = response.name;
+      });
+    } else {
+      this.userId = sub;
+    }
 
     if (isAdmin) {
       this.userType = 'admin';

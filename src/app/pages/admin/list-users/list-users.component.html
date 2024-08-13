@@ -15,7 +15,7 @@
       <div class="card" *ngFor="let user of usersPaginated">
         <div class="card-body">
           <h5 class="card-title">{{user.name}}</h5>
-          <a class="btn btn-primary">Ver Treinos</a>
+          <a class="btn btn-primary" (click)="viewWorkouts(user.id)">Ver Treinos</a>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
       <div class="card" *ngFor="let user of usersPaginated">
         <div class="card-body">
           <h5 class="card-title">{{user.name}}</h5>
-          <a class="btn btn-primary">Ver Treinos</a>
+          <a class="btn btn-primary" (click)="viewWorkouts(user.id)">Ver Treinos</a>
         </div>
       </div>
     </div>

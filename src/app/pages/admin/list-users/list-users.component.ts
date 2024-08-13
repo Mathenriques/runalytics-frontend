@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { SearchFilterComponent } from '../../../components/search-filter/search-filter.component';
 import { FormsModule } from '@angular/forms';
 import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-users',
@@ -24,11 +25,12 @@ import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.
 })
 export class ListUsersComponent {
   searchName: string = '';
-
   userId: string | null = '';
-  isDisabled: boolean = true;
   userType: string = 'admin';
   totalUsers: number = 100;
+
+  isDisabled: boolean = true;
+
   users: User[] = [];
   usersPaginated: User[] = [];
   list: number[] = []
@@ -36,7 +38,8 @@ export class ListUsersComponent {
   constructor(
     private getUsersService: GetAllAthletesService,
     private toastService: ToastrService,
-    private decodeJwtTokenService: DecodeJwtTokenService
+    private decodeJwtTokenService: DecodeJwtTokenService,
+    private router: Router
   ) {
     const { sub } = this.decodeJwtTokenService.execute();
     this.userId = sub;
@@ -81,5 +84,9 @@ export class ListUsersComponent {
     const endIndex = startIndex + 10;
 
     this.usersPaginated = this.users.slice(startIndex, endIndex);
+  }
+
+  viewWorkouts(userId: string) {
+    this.router.navigate([`treinos/${userId}`])
   }
 }

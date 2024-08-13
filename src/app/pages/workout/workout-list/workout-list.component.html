@@ -1,7 +1,8 @@
 <app-navigation-bar [userType]="userType" [userId]="userId" />
 
 <div class="container main">
-  <h1>Histórico de Treinos</h1>
+  <h1 *ngIf="!paramAthleteIdExists">Histórico de Treinos</h1>
+  <h1 *ngIf="paramAthleteIdExists">Histórico de Treinos de {{ userName }}</h1>
   <div class="button-create">
     <button class="btn btn-success" (click)="createWorkout()">NOVO TREINO</button>
   </div>
