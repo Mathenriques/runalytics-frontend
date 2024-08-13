@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserProfileResponse } from '../../types/user-profile-response.types';
-import { Observable } from 'rxjs';
+import { finalize, Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 @Injectable({
@@ -13,7 +13,13 @@ export class GetUserDataService {
   constructor(private httpClient: HttpClient) {}
 
   getData(userId: string | null): Observable<UserProfileResponse> {
+    const originalApiUrl = this.apiUrl; // Store the original value
     this.apiUrl += userId;
-    return this.httpClient.get<UserProfileResponse>(this.apiUrl)
+
+    return this.httpClient.get<UserProfileResponse>(this.apiUrl).pipe(
+      finalize(() => {
+        this.apiUrl = originalApiUrl; // Reset to the original value
+      })
+    );
   }
 }
