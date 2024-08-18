@@ -75,4 +75,28 @@
   <div *ngIf="workoutsData.length === 0">
     <h3>Infelizmente você não cadastrou nenhuma semana de treino ainda, clique no botão acima e cadastre!</h3>
   </div>
+
+  <button type="button" class="btn btn-primary d-none" id="autoModalTrigger" data-bs-toggle="modal" data-bs-target="#modalFeedback">
+    Just to open Modal Below
+  </button>
+  <div class="modal fade" id="modalFeedback" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <img src="/assets/svg/feedback-stars.svg" />
+          <h1 class="modal-title fs-5">Feedback do Seu Treino</h1>
+        </div>
+        <div class="modal-body">
+          <p class="feedback-subject">Comparamos suas duas ultimas semanas de treino e aqui estão os resultados!</p>
+          <p><strong>Volume Semanal: </strong>{{ workoutFeedback.weekly_volume }} km</p>
+          <p><strong>Horas de sono: </strong>{{ workoutFeedback.sleep_hours }} horas</p>
+          <p><strong>Treinos de Fortalecimento: </strong>{{ workoutFeedback.strengthening_workouts }}</p>
+          <p><strong>Nível de Estresse: </strong>{{ workoutFeedback.stress_level }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

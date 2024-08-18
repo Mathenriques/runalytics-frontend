@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { ToastrService } from 'ngx-toastr';
@@ -24,7 +24,13 @@ export class WorkoutListComponent implements OnInit{
   userId: string = ''
   userType: string = 'athlete'
   workoutsData: Workout[] = []
-  workoutFeedback: WorkoutFeedback | null = null;
+  workoutFeedback: WorkoutFeedback = {
+    weekly_volume: 2,
+    strengthening_workouts: 1,
+    diet_level: 2,
+    stress_level: 5,
+    sleep_hours: 1,
+  };
   paramAthleteIdExists: string | null = null;
   userName: string | null = null;
 
@@ -36,7 +42,8 @@ export class WorkoutListComponent implements OnInit{
     private toastService: ToastrService,
     private datePipe: DatePipe,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -70,8 +77,10 @@ export class WorkoutListComponent implements OnInit{
       })
     ).subscribe((workoutsData) => {
       this.workoutsData = workoutsData.workouts;
-      this.workoutFeedback = workoutsData.feedback;
+      this.workoutFeedback = workoutsData.compareWorkouts;
     });
+
+    this.openModal();
   }
 
   getFormattedDateRange(startDate: Date | string | null, endDate: Date | string | null): string {
@@ -129,6 +138,11 @@ export class WorkoutListComponent implements OnInit{
       id = '';
 
     });
+  }
+
+  openModal(): void {
+    const modalTrigger = this.renderer.selectRootElement('#autoModalTrigger');
+    modalTrigger.click();
   }
 
 }
