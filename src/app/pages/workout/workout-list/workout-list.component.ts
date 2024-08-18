@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
 import { GetUserDataService } from '../../../services/api/get-user-data.service';
+import { Workout, WorkoutFeedback } from '../../../types/workouts-types';
 
 @Component({
   selector: 'app-workout-list',
@@ -19,10 +20,11 @@ import { GetUserDataService } from '../../../services/api/get-user-data.service'
   templateUrl: './workout-list.component.html',
   styleUrl: './workout-list.component.scss'
 })
-export class WorkoutListComponent {
+export class WorkoutListComponent implements OnInit{
   userId: string = ''
   userType: string = 'athlete'
-  workoutsData: any[] = []
+  workoutsData: Workout[] = []
+  workoutFeedback: WorkoutFeedback | null = null;
   paramAthleteIdExists: string | null = null;
   userName: string | null = null;
 
@@ -35,9 +37,15 @@ export class WorkoutListComponent {
     private datePipe: DatePipe,
     private router: Router,
     private route: ActivatedRoute
-  ) {
+  ) {}
+
+  ngOnInit(): void {
     const { sub, isAdmin } = this.decodeJwtTokenService.execute();
     this.paramAthleteIdExists = this.route.snapshot.paramMap.get('athlete-id');
+
+    if (isAdmin) {
+      this.userType = 'admin';
+    }
 
     if (this.paramAthleteIdExists) {
       this.userId = this.paramAthleteIdExists
@@ -54,10 +62,6 @@ export class WorkoutListComponent {
       this.userId = sub;
     }
 
-    if (isAdmin) {
-      this.userType = 'admin';
-    }
-
     this.getAllWorkoutsService.getData(this.userId).pipe(
       tap((workoutResponse: any) => workoutResponse),
       catchError((error) => {
@@ -65,7 +69,8 @@ export class WorkoutListComponent {
         return throwError(() => error);
       })
     ).subscribe((workoutsData) => {
-      this.workoutsData = workoutsData;
+      this.workoutsData = workoutsData.workouts;
+      this.workoutFeedback = workoutsData.feedback;
     });
   }
 
