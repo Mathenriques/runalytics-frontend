@@ -95,12 +95,11 @@ export class WorkoutListComponent implements OnInit{
     ).subscribe((workoutsData) => {
       this.workoutsData = workoutsData.workouts;
       this.workoutFeedback = workoutsData.compareWorkouts;
-    });
 
-    if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
-      console.log('abrir modal')
-      this.openModal();
-    }
+      if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
+        this.openModal();
+      }
+    });
   }
 
   getFormattedDateRange(startDate: Date | string | null, endDate: Date | string | null): string {
