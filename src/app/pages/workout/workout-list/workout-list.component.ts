@@ -96,9 +96,9 @@ export class WorkoutListComponent implements OnInit{
       this.workoutsData = workoutsData.workouts;
       this.workoutFeedback = workoutsData.compareWorkouts;
 
-      if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
-        this.openModal();
-      }
+      // if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
+      //   this.openModal();
+      // }
     });
   }
 
