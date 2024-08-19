@@ -97,7 +97,7 @@ export class WorkoutListComponent implements OnInit{
       this.workoutFeedback = workoutsData.compareWorkouts;
     });
 
-    if (!this.localStorageService.getLocalStorage('modal_feedback_seen')) {
+    if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
       this.openModal();
     }
   }
@@ -166,6 +166,14 @@ export class WorkoutListComponent implements OnInit{
 
   closeModal(): void {
     this.localStorageService.setLocalStorage('modal_feedback_seen', true)
+  }
+
+  checkIfIsPositive(value: number): string | number {
+    if(value > 0) {
+      return `+${value}`;
+    }
+
+    return value;
   }
 
 }

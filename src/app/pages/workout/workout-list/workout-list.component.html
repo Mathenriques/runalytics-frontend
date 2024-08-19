@@ -3,9 +3,11 @@
 <div class="container main">
   <h1 *ngIf="!paramAthleteIdExists">Histórico de Treinos</h1>
   <h1 *ngIf="paramAthleteIdExists">Histórico de Treinos de {{ userName }}</h1>
+
   <div class="button-create">
     <button class="btn btn-success" (click)="createWorkout()">NOVO TREINO</button>
   </div>
+
   <div class="accordion accordion-flush" *ngIf="workoutsData.length > 0">
     <div class="accordion-item" *ngFor="let workout of workoutsData">
       <h2 class="accordion-header">
@@ -24,7 +26,6 @@
       <div
         [id]="workout.id"
         class="accordion-collapse collapse"
-        [attr.data-bs-parent]="'#accordionFlushExample'"
       >
         <div class="accordion-body">
           <div class="display-flex">
@@ -88,10 +89,10 @@
         </div>
         <div class="modal-body">
           <p class="feedback-subject">Comparamos suas duas ultimas semanas de treino e aqui estão os resultados!</p>
-          <p><strong>Volume Semanal: </strong>{{ workoutFeedback.weekly_volume.value }} km</p>
-          <p><strong>Horas de sono: </strong>{{ workoutFeedback.sleep_hours.value }} horas</p>
-          <p><strong>Treinos de Fortalecimento: </strong>{{ workoutFeedback.strengthening_workouts.value }}</p>
-          <p><strong>Nível de Estresse: </strong>{{ workoutFeedback.stress_level.value }}</p>
+          <p><strong>Volume Semanal: </strong>{{ checkIfIsPositive(workoutFeedback.weekly_volume.value) }} km</p>
+          <p><strong>Horas de sono: </strong>{{ checkIfIsPositive(workoutFeedback.sleep_hours.value) }} hora(s)</p>
+          <p><strong>Treinos de Fortalecimento: </strong>{{ checkIfIsPositive(workoutFeedback.strengthening_workouts.value) }} treino(s)</p>
+          <p><strong>Nível de Estresse: </strong>{{ checkIfIsPositive(workoutFeedback.stress_level.value) }}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="closeModal()">Fechar</button>

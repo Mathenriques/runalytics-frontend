@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
 import { OptionsSelect } from '../../../types/options-select.types';
 import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { Router } from '@angular/router';
+import { SetGetLocalStorageService } from '../../../services/utils/set-get-local-storage.service';
 
 @Component({
   selector: 'app-workout-creation',
@@ -54,6 +55,7 @@ export class WorkoutCreationComponent {
   constructor(
     private createWorkoutService: CreateWorkoutService,
     private router: Router,
+    private localStorageService: SetGetLocalStorageService,
     private decodeJwtTokenService: DecodeJwtTokenService,
     private toastService: ToastrService,
     private fb: FormBuilder,
@@ -83,6 +85,10 @@ export class WorkoutCreationComponent {
     this.workoutCreationForm.controls[field].setValue(selectedOptions.value);
   }
 
+  cleanLocalStorageModal() {
+    this.localStorageService.deleteLocalStorage('modal_feedback_seen');
+  }
+
   navigate() {
     this.router.navigate(['/treinos'])
   }
@@ -91,6 +97,7 @@ export class WorkoutCreationComponent {
     this.createWorkoutService.createWorkout(this.workoutCreationForm.value).subscribe({
       next: () => {
         this.toastService.success('Registro feito com sucesso!');
+        this.cleanLocalStorageModal();
         this.navigate();
       },
       error: () =>
