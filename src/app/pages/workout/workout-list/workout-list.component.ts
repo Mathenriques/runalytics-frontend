@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 import { DecodeJwtTokenService } from '../../../services/utils/decode-jwt-token.service';
 import { NavigationBarComponent } from '../../../components/navigation-bar/navigation-bar.component';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +8,8 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
 import { GetUserDataService } from '../../../services/api/get-user-data.service';
+import { Workout, WorkoutFeedbackResponse } from '../../../types/workouts-types';
+import { SetGetLocalStorageService } from '../../../services/utils/set-get-local-storage.service';
 
 @Component({
   selector: 'app-workout-list',
@@ -19,10 +21,32 @@ import { GetUserDataService } from '../../../services/api/get-user-data.service'
   templateUrl: './workout-list.component.html',
   styleUrl: './workout-list.component.scss'
 })
-export class WorkoutListComponent {
+export class WorkoutListComponent implements OnInit{
   userId: string = ''
   userType: string = 'athlete'
-  workoutsData: any[] = []
+  workoutsData: Workout[] = []
+  workoutFeedback: WorkoutFeedbackResponse = {
+    weekly_volume: {
+      status: 'Médio',
+      value: 0
+    },
+    strengthening_workouts: {
+      status: 'Médio',
+      value: 0
+    },
+    diet_level: {
+      status: 'Médio',
+      value: 0
+    },
+    stress_level: {
+      status: 'Médio',
+      value: 0
+    },
+    sleep_hours: {
+      status: 'Médio',
+      value: 0
+    },
+  };
   paramAthleteIdExists: string | null = null;
   userName: string | null = null;
 
@@ -31,13 +55,21 @@ export class WorkoutListComponent {
     private getAllWorkoutsService: GetAllWorkoutsService,
     private getUserDataService: GetUserDataService,
     private deleteWorkoutService: DeleteWorkoutService,
+    private localStorageService: SetGetLocalStorageService,
     private toastService: ToastrService,
     private datePipe: DatePipe,
     private router: Router,
-    private route: ActivatedRoute
-  ) {
+    private route: ActivatedRoute,
+    private renderer: Renderer2
+  ) {}
+
+  ngOnInit(): void {
     const { sub, isAdmin } = this.decodeJwtTokenService.execute();
     this.paramAthleteIdExists = this.route.snapshot.paramMap.get('athlete-id');
+
+    if (isAdmin) {
+      this.userType = 'admin';
+    }
 
     if (this.paramAthleteIdExists) {
       this.userId = this.paramAthleteIdExists
@@ -54,10 +86,6 @@ export class WorkoutListComponent {
       this.userId = sub;
     }
 
-    if (isAdmin) {
-      this.userType = 'admin';
-    }
-
     this.getAllWorkoutsService.getData(this.userId).pipe(
       tap((workoutResponse: any) => workoutResponse),
       catchError((error) => {
@@ -65,8 +93,13 @@ export class WorkoutListComponent {
         return throwError(() => error);
       })
     ).subscribe((workoutsData) => {
-      this.workoutsData = workoutsData;
+      this.workoutsData = workoutsData.workouts;
+      this.workoutFeedback = workoutsData.compareWorkouts;
     });
+
+    if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
+      this.openModal();
+    }
   }
 
   getFormattedDateRange(startDate: Date | string | null, endDate: Date | string | null): string {
@@ -124,6 +157,23 @@ export class WorkoutListComponent {
       id = '';
 
     });
+  }
+
+  openModal(): void {
+    const modalTrigger = this.renderer.selectRootElement('#autoModalTrigger');
+    modalTrigger.click();
+  }
+
+  closeModal(): void {
+    this.localStorageService.setLocalStorage('modal_feedback_seen', true)
+  }
+
+  checkIfIsPositive(value: number): string | number {
+    if(value > 0) {
+      return `+${value}`;
+    }
+
+    return value;
   }
 
 }
