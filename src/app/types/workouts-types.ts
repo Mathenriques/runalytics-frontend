@@ -23,3 +23,16 @@ export type WorkoutFeedback = Omit<
   | 'user_id'
   | 'didMyofascialRelease'
 >;
+
+export type ItemsFeedback = {
+  status: 'Bom' | 'Médio' | 'Ruim';
+  value: number;
+};
+
+export type WorkoutFeedbackResponse = {
+  stress_level: ItemsFeedback;
+  weekly_volume: ItemsFeedback;
+  sleep_hours: ItemsFeedback;
+  strengthening_workouts: ItemsFeedback;
+  diet_level: ItemsFeedback;
+};

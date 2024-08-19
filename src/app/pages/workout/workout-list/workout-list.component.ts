@@ -8,7 +8,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
 import { GetUserDataService } from '../../../services/api/get-user-data.service';
-import { Workout, WorkoutFeedback } from '../../../types/workouts-types';
+import { Workout, WorkoutFeedbackResponse } from '../../../types/workouts-types';
 
 @Component({
   selector: 'app-workout-list',
@@ -24,12 +24,27 @@ export class WorkoutListComponent implements OnInit{
   userId: string = ''
   userType: string = 'athlete'
   workoutsData: Workout[] = []
-  workoutFeedback: WorkoutFeedback = {
-    weekly_volume: 2,
-    strengthening_workouts: 1,
-    diet_level: 2,
-    stress_level: 5,
-    sleep_hours: 1,
+  workoutFeedback: WorkoutFeedbackResponse = {
+    weekly_volume: {
+      status: 'Médio',
+      value: 0
+    },
+    strengthening_workouts: {
+      status: 'Médio',
+      value: 0
+    },
+    diet_level: {
+      status: 'Médio',
+      value: 0
+    },
+    stress_level: {
+      status: 'Médio',
+      value: 0
+    },
+    sleep_hours: {
+      status: 'Médio',
+      value: 0
+    },
   };
   paramAthleteIdExists: string | null = null;
   userName: string | null = null;

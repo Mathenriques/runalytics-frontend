@@ -88,10 +88,10 @@
         </div>
         <div class="modal-body">
           <p class="feedback-subject">Comparamos suas duas ultimas semanas de treino e aqui estão os resultados!</p>
-          <p><strong>Volume Semanal: </strong>{{ workoutFeedback.weekly_volume }} km</p>
-          <p><strong>Horas de sono: </strong>{{ workoutFeedback.sleep_hours }} horas</p>
-          <p><strong>Treinos de Fortalecimento: </strong>{{ workoutFeedback.strengthening_workouts }}</p>
-          <p><strong>Nível de Estresse: </strong>{{ workoutFeedback.stress_level }}</p>
+          <p><strong>Volume Semanal: </strong>{{ workoutFeedback.weekly_volume.value }} km</p>
+          <p><strong>Horas de sono: </strong>{{ workoutFeedback.sleep_hours.value }} horas</p>
+          <p><strong>Treinos de Fortalecimento: </strong>{{ workoutFeedback.strengthening_workouts.value }}</p>
+          <p><strong>Nível de Estresse: </strong>{{ workoutFeedback.stress_level.value }}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
