@@ -98,6 +98,7 @@ export class WorkoutListComponent implements OnInit{
     });
 
     if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
+      console.log('abrir modal')
       this.openModal();
     }
   }
