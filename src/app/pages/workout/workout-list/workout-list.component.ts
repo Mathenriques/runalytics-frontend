@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DeleteWorkoutService } from '../../../services/api/delete-workout.service';
 import { GetUserDataService } from '../../../services/api/get-user-data.service';
 import { Workout, WorkoutFeedbackResponse } from '../../../types/workouts-types';
+import { SetGetLocalStorageService } from '../../../services/utils/set-get-local-storage.service';
 
 @Component({
   selector: 'app-workout-list',
@@ -54,6 +55,7 @@ export class WorkoutListComponent implements OnInit{
     private getAllWorkoutsService: GetAllWorkoutsService,
     private getUserDataService: GetUserDataService,
     private deleteWorkoutService: DeleteWorkoutService,
+    private localStorageService: SetGetLocalStorageService,
     private toastService: ToastrService,
     private datePipe: DatePipe,
     private router: Router,
@@ -95,7 +97,9 @@ export class WorkoutListComponent implements OnInit{
       this.workoutFeedback = workoutsData.compareWorkouts;
     });
 
-    this.openModal();
+    if (!this.localStorageService.getLocalStorage('modal_feedback_seen')) {
+      this.openModal();
+    }
   }
 
   getFormattedDateRange(startDate: Date | string | null, endDate: Date | string | null): string {
@@ -158,6 +162,10 @@ export class WorkoutListComponent implements OnInit{
   openModal(): void {
     const modalTrigger = this.renderer.selectRootElement('#autoModalTrigger');
     modalTrigger.click();
+  }
+
+  closeModal(): void {
+    this.localStorageService.setLocalStorage('modal_feedback_seen', true)
   }
 
 }
