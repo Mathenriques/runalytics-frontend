@@ -27,6 +27,7 @@ export type WorkoutFeedback = Omit<
 export type ItemsFeedback = {
   status: 'Bom' | 'Médio' | 'Ruim';
   value: number;
+  message: string
 };
 
 export type WorkoutFeedbackResponse = {

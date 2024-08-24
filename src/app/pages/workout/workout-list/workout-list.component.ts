@@ -28,23 +28,28 @@ export class WorkoutListComponent implements OnInit{
   workoutFeedback: WorkoutFeedbackResponse = {
     weekly_volume: {
       status: 'Médio',
-      value: 0
+      value: 0,
+      message: ''
     },
     strengthening_workouts: {
       status: 'Médio',
-      value: 0
+      value: 0,
+      message: ''
     },
     diet_level: {
       status: 'Médio',
-      value: 0
+      value: 0,
+      message: ''
     },
     stress_level: {
       status: 'Médio',
-      value: 0
+      value: 0,
+      message: ''
     },
     sleep_hours: {
       status: 'Médio',
-      value: 0
+      value: 0,
+      message: ''
     },
   };
   paramAthleteIdExists: string | null = null;
@@ -96,9 +101,9 @@ export class WorkoutListComponent implements OnInit{
       this.workoutsData = workoutsData.workouts;
       this.workoutFeedback = workoutsData.compareWorkouts;
 
-      // if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
-      //   this.openModal();
-      // }
+      if (!this.localStorageService.getLocalStorage('modal_feedback_seen') && this.workoutsData.length > 1) {
+        this.openModal();
+      }
     });
   }
 
